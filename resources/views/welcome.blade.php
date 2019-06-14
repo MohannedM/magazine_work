@@ -52,38 +52,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-xs-12 col-md-6 col-sm-6 col-padding">
-                            <div class="carousel py-5 mx-1 slide mb-5" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#slider4" data-slide-to="0"></li>
-                                    <li data-target="#slider4" data-slide-to="1"></li>
-                                    <li data-target="#slider4" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="img-fluid d-block" src="https://source.unsplash.com/wgq4eit198Q/700x400" alt="First Slide">
-                                        <div class="carousel-caption d-none d-md-block">
-                                        <h3>Slide one</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, corporis.</p>
-                                        </div>  
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="img-fluid d-block"src="https://source.unsplash.com/WLUHO9A_xik/700x400" alt="Second Slide">
-                                        <div class="carousel-caption d-none d-md-block">
-                                        <h3>Slide two</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, corporis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="img-fluid d-block"src="https://source.unsplash.com/4yta6mU66dE/700x400" alt="Third Slide">
-                                        <div class="carousel-caption d-none d-md-block">
-                                        <h3>Slide three</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, corporis.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="col-sm-3 hidden-xs col-padding">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">

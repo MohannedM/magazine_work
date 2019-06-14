@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMagazinesTable extends Migration
+class CreateChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateMagazinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('magazines', function (Blueprint $table) {
+        Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('magazine_name');
-            $table->tinyInteger('is_active')->default(0);
-            $table->text('pdf_path');
+            $table->string('channel_name');
             $table->text('cover_path');
-            $table->integer('channel_id');
+            $table->tinyInteger('is_active')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateMagazinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('magazines');
+        Schema::dropIfExists('channels');
     }
 }

@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
-Route::resource('/magazine', 'MagazineController');
+Route::resource('/magazines', 'MagazinesController');
+Route::resource('/channels', 'ChannelsController');

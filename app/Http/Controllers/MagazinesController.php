@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Magazine;
-class MagazineController extends Controller
+use App\Http\Requests\MagazineCreateRequest;
+
+class MagazinesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +15,15 @@ class MagazineController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
+
     }
 
 
     public function index()
     {
+        $magazines = Magazine::all();
+        return view('magazines.index')->with('magazines', $magazines);
     }
 
     /**
@@ -28,7 +33,7 @@ class MagazineController extends Controller
      */
     public function create()
     {
-        return view('magazine.create');        
+        return view('magazines.create');        
     }
 
     /**
@@ -37,29 +42,9 @@ class MagazineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MagazineCreateRequest $request)
     {
-        // $magazine=new Magazine();
-        // $magazine->name= request('magazine_name');
-        // $magazine->path= request('path');
-        // $magazine->created_at= request('date');
-        Magazine::create($request->all());
-
-
-        // $rules = array(
-        //     'path' => 'required | mimes:pdf',
-        // );
-
-        // $validator = Validator::make($request->all(), $rules);
-
-        // if ($validator->fails()) {
-        //     return Redirect::back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        // }
-        // $magazine->save();
-        // return $magazine;
-        // return redirect('welcome');
+        return "success";
     }
 
     /**

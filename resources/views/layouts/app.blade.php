@@ -161,8 +161,9 @@
                                         </ul>
                                     </li>
                                     @if(Auth::check())
-                                    <li><a href="/magazine" class="category04">اضافة مجلة</a></li>
+                                    <li><a href="/channels/create" class="category04">اضافة مجلة</a></li>
                                     @endif
+                                    <li><a href="/article/create" class="category01">اضافة مقالة</a></li>
                                 </ul>
                             </div><!-- navbar-collapse -->
                         </nav>
@@ -184,7 +185,7 @@
     
 
     
-        <div class="sub-footer">  <!-- sub footer -->
+        <div class="sub-footer" style=" margin-bottom:-7.5rem">  <!-- sub footer -->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
