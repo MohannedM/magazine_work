@@ -10,4 +10,8 @@ class Channel extends Model
     protected $fillable = [
         'channel_name', 'cover_path', 'is_active'
     ];
+
+    public function magazines(){
+        return $this->hasMany('App\Magazine');
+    }
 }

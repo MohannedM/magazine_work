@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Channel;
-use App\Http\Requests\ChannelCreateRequest;
 
-class ChannelsController extends Controller
+class AdminChannelsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,14 @@ class ChannelsController extends Controller
      */
     public function __construct()
     {
-        //Only authenticated users can CRUD channels
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth');
+        $this->middleware('Admin');
     }
-
     public function index()
     {
-        //Returns all channels that is only approved by the admin
-        $channels = Channel::where('is_active', '1')->get();
-        return view('channels.index')->with('channels', $channels);
+        //
+        $channels = Channel::all();
+        return view('admin.channels.index')->with('channels', $channels);
     }
 
     /**
@@ -34,7 +32,6 @@ class ChannelsController extends Controller
     public function create()
     {
         //
-        return view('channels.create');
     }
 
     /**
@@ -43,28 +40,9 @@ class ChannelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ChannelCreateRequest $request)
+    public function store(Request $request)
     {
-        //Instantiating a new channel object
-        $channel = new Channel;
-
-        //Asigning the uploaded image to a variable
-        $file = $request->cover_path;
-        //Asigining the image a new name
-        $cover_name = time() . $file->getClientOriginalName();
-        //Moving image to images folder
-        $file->move('images', $cover_name);
-        //Creating the new channel by the logged in user
-        $channel->channel_name = $request->channel_name;
-        $channel->cover_path = $cover_name;
-        auth()->user()->channels()->save($channel);
-
-        //redirecting to index
-        return redirect('/channels');
-        
-
-
-        
+        //
     }
 
     /**
@@ -75,10 +53,7 @@ class ChannelsController extends Controller
      */
     public function show($id)
     {
-        //Find the specified channel
-        $magazines = Channel::findOrFail($id)->magazines;
-        //Return the channel with all its magazines relases
-        return view('magazines.index')->with('magazines', $magazines);
+        //
     }
 
     /**
@@ -102,6 +77,11 @@ class ChannelsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $channel = Channel::findOrFail($id);
+        //Check its status and reverse it
+        $channel->is_active == 0 ? $channel->is_active = 1 : $channel->is_active = 0;
+        $channel->save();
+        return redirect('/admin/channels');
     }
 
     /**
@@ -113,5 +93,7 @@ class ChannelsController extends Controller
     public function destroy($id)
     {
         //
+        Channel::findOrFail($id)->delete();
+        return redirect('/admin/channels');
     }
 }

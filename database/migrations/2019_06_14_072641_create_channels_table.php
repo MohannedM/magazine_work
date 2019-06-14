@@ -15,6 +15,7 @@ class CreateChannelsTable extends Migration
     {
         Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('channel_name');
             $table->text('cover_path');
             $table->tinyInteger('is_active')->default(0);

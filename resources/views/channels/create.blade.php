@@ -5,16 +5,8 @@
 <div class="py-5">
     <div class="container">
         <h1 class="display-4">اضف مجلة</h1>
-        <form action="/channels" method="POST">
+        <form action="/channels" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
-                {{-- <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-                    <label for="name" class="col-sm-3 control-label">Name: </label>
-                    <div class="col-sm-6">
-                        <input class="form-control" required="required" name="name" type="text" id="name">
-                        {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-                    </div>
-                </div> --}}
-
             <div class="form-group">
                 <label for="magazine_name">اسم المجلة</label>
                 <input type="text" name="channel_name" class="form-control {{ $errors->has('channel_name') ? 'is-invalid' : ''}}">

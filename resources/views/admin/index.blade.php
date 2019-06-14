@@ -98,9 +98,9 @@
         <div class="col-md-3">
           <div class="card text-center bg-primary text-white mb-3">
             <div class="card-body">
-              <h3>عدد المقلات</h3>
-              <h4 class="display-4">
-                <i class="fas fa-pencil-alt"></i> 6
+              <h3>عدد المجلات</h3>
+              <h5>
+                <i class="fas fa-pencil-alt"></i> {{$channels->count()}}
               </h4>
               <a href="posts.html" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
@@ -108,9 +108,9 @@
 
           <div class="card text-center bg-success text-white mb-3">
             <div class="card-body">
-              <h3>الاقسام</h3>
-              <h4 class="display-4">
-                <i class="fas fa-folder"></i> 4
+              <h3>عدد الاصدرات</h3>
+              <h5>
+                <i class="fas fa-folder"></i> {{$magazines->count()}}
               </h4>
               <a href="categories.html" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
@@ -118,13 +118,46 @@
 
           <div class="card text-center bg-warning text-white mb-3">
             <div class="card-body">
-              <h3>الكتاب</h3>
-              <h4 class="display-4">
-                <i class="fas fa-users"></i> 4
+              <h3>عدد الكتاب</h3>
+              <h5>
+                <i class="fas fa-users"></i> {{$users->count()}}
               </h4>
               <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
+
+          <div class="card text-center bg-info text-white mb-3">
+            <div class="card-body">
+              <h3>عدد المقلات</h3>
+              <h5>
+                <i class="fas fa-users"></i> {{$users->count()}}
+              </h4>
+              <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+            </div>
+          </div>
+
+            <div class="card text-center bg-danger text-white mb-3">
+              <div class="card-body">
+                <h3>عدد التعليقات</h3>
+                <h5>
+                  <i class="fas fa-users"></i> {{$users->count()}}
+                </h4>
+                <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+              </div>
+            </div>
+
+            
+            <div class="card text-center bg-secondary text-white mb-3">
+              <div class="card-body">
+                <h3>عدد الردود</h3>
+                <h5>
+                  <i class="fas fa-users"></i> {{$users->count()}}
+                </h4>
+                <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+              </div>
+            </div>
+
+
         </div>
       </div>
     </div>

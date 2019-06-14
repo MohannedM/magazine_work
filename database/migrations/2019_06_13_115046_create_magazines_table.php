@@ -15,11 +15,11 @@ class CreateMagazinesTable extends Migration
     {
         Schema::create('magazines', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('channel_id');
             $table->string('magazine_name');
             $table->tinyInteger('is_active')->default(0);
             $table->text('pdf_path');
             $table->text('cover_path');
-            $table->integer('channel_id');
             $table->timestamps();
         });
     }

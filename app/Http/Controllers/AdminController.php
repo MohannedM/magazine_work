@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Channel;
+use App\User;
+use App\Magazine;
 
 class AdminController extends Controller
 {
@@ -13,6 +16,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('admin.index');
+        $channels = new Channel;
+        $users = new User;
+        $magazines = new Magazine;
+
+        return view('admin.index', compact('channels', 'users', 'magazines'));
     }
 }

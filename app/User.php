@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function channels(){
+        return $this->hasMany('App\Channel');
+    }
+
     public function isAdmin(){
         if($this->is_admin == 1){
             return true;
