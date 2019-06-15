@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Magazine;
 use App\Channel;
 use App\Http\Requests\MagazineCreateRequest;
+use App\Article;
 
 class MagazinesController extends Controller
 {
@@ -21,9 +22,10 @@ class MagazinesController extends Controller
     }
 
 
-    public function index($id)
+    public function index($channel_id)
     {
         $magazines = Magazine::all();
+        $id = $channel_id;
         return view('magazines.index', compact('magazines', 'id'));
     }
 
@@ -32,10 +34,9 @@ class MagazinesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create($channel_id)
     {
-        if($id){
-            $channel_id = $id;
+        if($channel_id){
             return view('magazines.create')->with('channel_id', $channel_id);        
         }
         return redirect('/channels');
@@ -82,11 +83,13 @@ class MagazinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($channel_id,$id)
     {
         //
+        $magazine = Magazine::findOrFail($id);
+        $articles = Article::where('magazine_id', $id)->where('is_active', '1')->get();
+        return view('magazines.show', compact('magazine', 'articles'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -97,6 +100,7 @@ class MagazinesController extends Controller
     {
         //
     }
+    
 
     /**
      * Update the specified resource in storage.

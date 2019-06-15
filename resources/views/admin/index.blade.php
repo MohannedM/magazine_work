@@ -21,76 +21,43 @@
                   <th>العنوان</th>
                   <th>القسم</th>
                   <th>التاريخ</th>
-                  <th></th>
+                  <th>تفعيل/ايقاف</th>
+                  <th>مسح</th>
                 </tr>
               </thead>
               <tbody>
+                @if(count($articles) > 0)
+                @foreach($articles as $article)
                 <tr>
-                  <td>1</td>
-                  <td>Post One</td>
-                  <td>Web Development</td>
-                  <td>May 10 2018</td>
+                  <td>{{$article->id}}</td>
+                  <td><a href="/channels/magazines/{{$article->magazine_id}}/articles/{{$article->id}}">{{$article->article_title}}</a></td>
+                  <td>القسم</td>
+                  <td>{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</td>
                   <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
+
+                           
+                      <form action="/admin/articles/{{$article->id}}" method="POST">
+                          {{csrf_field()}}
+                          <input type="hidden" name="_method" value="PUT">
+                          <button type="submit" class="btn btn-secondary">
+                              <i class="far fa-edit"></i> {{$article->is_active == 0 ? 'تفعيل' : 'إقاف'}} 
+                          </button>
+                      </form>
+                      
+                  </td>
+                  <td>     
+                      <form action="/admin/articles/{{$article->id}}" method="POST">
+                          {{csrf_field()}}
+                          <input type="hidden" name="_method" value="DELETE">
+                          <button type="submit" class="btn btn-danger">
+                              <i class="far fa-edit"></i> مسح 
+                          </button>
+                      </form>
+                      
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Post Two</td>
-                  <td>Tech Gadgets</td>
-                  <td>May 11 2018</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Post Three</td>
-                  <td>Web Development</td>
-                  <td>May 13 2018</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Post Four</td>
-                  <td>Business</td>
-                  <td>May 15 2018</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Post Five</td>
-                  <td>Web Development</td>
-                  <td>May 17 2018</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Post Six</td>
-                  <td>Health & Wellness</td>
-                  <td>May 20 2018</td>
-                  <td>
-                    <a href="details.html" class="btn btn-secondary">
-                      <i class="fas fa-angle-double-right"></i> Details
-                    </a>
-                  </td>
-                </tr>
+                @endforeach
+                @endif
               </tbody>
             </table>
           </div>
@@ -130,7 +97,7 @@
             <div class="card-body">
               <h3>عدد المقلات</h3>
               <h5>
-                <i class="fas fa-users"></i> {{$users->count()}}
+                <i class="fas fa-users"></i> {{$articles->count()}}
               </h4>
               <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
             </div>

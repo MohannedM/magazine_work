@@ -4,37 +4,31 @@
 
 <div class="py-5">
     <div class="container">
-        <h1 class="display-4">اضف إصدار</h1>
-        <form action="/channels/magazines" method="POST" enctype="multipart/form-data">
+        <h1 class="display-4">اضف مقالة</h1>
+        <form action="/channels/magazines/{{$magazine_id}}/articles" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="form-group mb-3">
-                <label for="magazine_name">عنوان الاصدار</label>
-                <input type="text" name="magazine_name" class="form-control {{ $errors->has('magazine_name') ? 'is-invalid' : ''}}">
-                <span class="invalid-feedback">عنوان الاصدار مطلوب</span>
+                <label for="article_title">عنوان المقالة</label>
+                <input type="text" name="article_title" class="form-control {{ $errors->has('article_title') ? 'is-invalid' : ''}}">
+                <span class="invalid-feedback">عنوان المقالة مطلوب</span>
             </div>
             <div class="form-group mb-3">
-                <label for="pdf_path">رفع المجلة بسيغة PDF</label>
-                <div class="custom-file">
-                    <input type="file" name="pdf_path" class="custom-file-input  {{ $errors->has('pdf_path') ? 'is-invalid' : ''}}">
-                    <label for="" class="custom-file-label"></label>
-                    <span class="invalid-feedback"> المجلة لالكترونية مطلوبة بصيغة  <span class="text-muted">(.jpg,.jpeg, .png, .pdf)</span></span>
-                </div>
+                <label for="article_content">المقالة</label>
+                <textarea name="article_content" class="form-control {{ $errors->has('article_content') ? 'is-invalid' : ''}}" style="resize:none"></textarea>
+                <span class="invalid-feedback">المقالة مطلوبة</span>
             </div>
             <div class="form-group mb-3">
-                <label for="cover_path">غلاف المجلة</label>
+                <label for="cover_path">غلاف المقالة</label>
                 <div class="custom-file">
-                    <input type="file" name="cover_path" class="custom-file-input  {{ $errors->has('cover_path') ? 'is-invalid' : ''}}">
-                    <label for="" class="custom-file-label"></label>
+                    <input type="file" name="article_cover" class="custom-file-input  {{ $errors->has('article_cover') ? 'is-invalid' : ''}}">
+                    <label for="article_cover" class="custom-file-label"></label>
                     <span class="invalid-feedback">صورة الغلاف مطلوبة بصيغة <span class="text-muted">(.jpg, .jpeg, .png)</span></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="date">تاريخ الاصدار</label>
-                <input type="date" value="{{date("Y-m-d")}}" name="created_at" class="form-control">
-            </div>
+            <input type="hidden" name="magazine_id" value="{{$magazine_id}}">
             <input type="hidden" name="channel_id" value="{{$channel_id}}">
-            <input type="submit" class="btn btn-primary" value="اضافة">
+            <input type="submit" class="btn btn-primary mt-3" value="اضافة">
         </form>
     </div>
 </div>

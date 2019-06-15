@@ -26,7 +26,7 @@ class ChannelCreateRequest extends FormRequest
         return [
             //
             'channel_name'=>'required',
-            'cover_path'=>'required|mimes:png,jpg,jpeg,pdf|max:10000'
+            'cover_path'=>'required|mimes:png,jpg,jpeg|max:10000'
         ];
     }
 }

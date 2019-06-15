@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MagazineCreateRequest extends FormRequest
+class CreateArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class MagazineCreateRequest extends FormRequest
     {
         return [
             //
-            'magazine_name'=>'required',
-            'pdf_path'=>'required|mimes:png,jpg,jpeg,pdf|max:10000',
-            'cover_path'=>'required|mimes:png,jpg,jpeg|max:10000'
+            'article_title'=>'required',
+            'article_content'=>'required',
+            'article_cover'=>'required|mimes:png,jpg,jpeg,pdf|max:10000'
         ];
     }
 }
