@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('article_content');
             $table->integer('user_id')->default(0);
             $table->integer('magazine_id')->default(0);
-            // $table->tinyInteger('category_id');
+            $table->tinyInteger('category_id');
             $table->text('article_cover');
             $table->tinyInteger('is_active')->default(0);
             $table->timestamps();

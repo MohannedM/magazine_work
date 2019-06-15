@@ -26,6 +26,16 @@
                     <span class="invalid-feedback">صورة الغلاف مطلوبة بصيغة <span class="text-muted">(.jpg, .jpeg, .png)</span></span>
                 </div>
             </div>
+            <div class="form-group mb-3">
+                <label for="category_id">فسم المقالة</label>
+                <select name="category_id"  class="form-control {{ $errors->has('category_id') ? 'is-invalid' : ''}}">
+                    <option value="0">اختار قسم</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->category_name}}</option>    
+                    @endforeach
+                </select>
+                <span class="invalid-feedback">قسم المقالة مطلوب</span>
+            </div>
             <input type="hidden" name="magazine_id" value="{{$magazine_id}}">
             <input type="hidden" name="channel_id" value="{{$channel_id}}">
             <input type="submit" class="btn btn-primary mt-3" value="اضافة">

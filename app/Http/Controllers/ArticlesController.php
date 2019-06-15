@@ -7,6 +7,7 @@ use App\Http\Requests\CreateArticleRequest;
 use App\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Magazine;
+use App\Category;
 
 class ArticlesController extends Controller
 {
@@ -30,8 +31,15 @@ class ArticlesController extends Controller
     public function create($magazine_id)
     {
         //
+        $categories = Category::all();
         $channel_id = Magazine::findOrFail($magazine_id)->channel_id;
-        return view('articles.create', compact('magazine_id','channel_id'));
+        return view('articles.create', compact('magazine_id','channel_id', 'categories'));
+    }
+    public function createArticle(){
+        $categories = Category::all();
+        $magazine_id = 0;
+        $channel_id = 0;
+        return view('articles.create', compact('magazine_id','channel_id', 'categories'));
     }
 
     /**
@@ -59,12 +67,12 @@ class ArticlesController extends Controller
         //Assign the rest of information
         $article->article_title = $request->article_title;
         $article->article_content = $request->article_content;
+        $article->category_id = $request->category_id;
         $article->save();
         if($request->magazine_id != 0){
             return redirect('channels/'. $request->channel_id .'/magazines/'.$request->magazine_id);
         }
-        return redirect('/');
-        
+        return redirect('/');  
     }
 
     /**

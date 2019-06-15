@@ -78,9 +78,9 @@ class ChannelsController extends Controller
     public function show($id)
     {
         //Find the specified channel
-        $magazines = Channel::findOrFail($id)->magazines;
+        $magazines = Channel::findOrFail($id)->magazines()->where('is_active',1)->get();
         //Return the channel with all its magazines relases
-        return view('magazines.index', compact('magazines', 'id'));
+        return view('channels.show', compact('magazines', 'id'));
     }
 
     /**
