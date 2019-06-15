@@ -26,7 +26,8 @@ class MagazineCreateRequest extends FormRequest
         return [
             //
             'magazine_name'=>'required',
-            'pdf_path'=>'required'
+            'pdf_path'=>'required|mimes:png,jpg,jpeg,pdf|max:10000',
+            'cover_path'=>'required|mimes:png,jpg,jpeg,pdf|max:10000'
         ];
     }
 }

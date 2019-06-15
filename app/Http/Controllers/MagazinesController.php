@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Magazine;
+use App\Channel;
 use App\Http\Requests\MagazineCreateRequest;
 
 class MagazinesController extends Controller
@@ -20,10 +21,10 @@ class MagazinesController extends Controller
     }
 
 
-    public function index()
+    public function index($id)
     {
         $magazines = Magazine::all();
-        return view('magazines.index')->with('magazines', $magazines);
+        return view('magazines.index', compact('magazines', 'id'));
     }
 
     /**
@@ -31,9 +32,13 @@ class MagazinesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('magazines.create');        
+        if($id){
+            $channel_id = $id;
+            return view('magazines.create')->with('channel_id', $channel_id);        
+        }
+        return redirect('/channels');
     }
 
     /**
@@ -44,7 +49,31 @@ class MagazinesController extends Controller
      */
     public function store(MagazineCreateRequest $request)
     {
-        return "success";
+        //Finding and instantiating needed objects
+        $channel = Channel::findOrFail($request->channel_id);
+        $magazine = new Magazine;
+
+        $magazine->magazine_name = $request->magazine_name;
+
+         //Asigning the uploaded file to variables
+         $photo = $request->cover_path;
+         $pdf = $request->pdf_path;
+         //Asigining the image a new name
+         $cover_name = time() . $photo->getClientOriginalName();
+         $pdf_name = time() . $pdf->getClientOriginalName();
+         //Moving image to images folder
+         $photo->move('images', $cover_name);
+         $pdf->move('pdfs', $pdf_name);
+         //Saving file name to the database
+         $magazine->cover_path = $cover_name;
+         $magazine->pdf_path = $pdf_name;
+         //If the user was an admin the magazine will be autmatically active
+        auth()->user()->is_admin == 1 ? $magazine->is_active = 1 : $magazine->is_active = 0;
+         //Creating the new magazine by its channel
+         $channel->magazines()->save($magazine);
+        //redirecting with a temp success session
+        return redirect('/channels/'.$request->channel_id)->with('success', 'تم اضافة الإصدار بنجاح');
+         
     }
 
     /**

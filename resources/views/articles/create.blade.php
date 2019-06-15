@@ -5,7 +5,7 @@
 <div class="py-5">
     <div class="container">
         <h1 class="display-4">اضف إصدار</h1>
-        <form action="/channels/{{$channel_id}}/magazines" method="POST" enctype="multipart/form-data">
+        <form action="/channels/magazines" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="form-group mb-3">

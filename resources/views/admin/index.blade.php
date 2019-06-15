@@ -102,7 +102,7 @@
               <h5>
                 <i class="fas fa-pencil-alt"></i> {{$channels->count()}}
               </h4>
-              <a href="posts.html" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="/admin/channels" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -112,7 +112,7 @@
               <h5>
                 <i class="fas fa-folder"></i> {{$magazines->count()}}
               </h4>
-              <a href="categories.html" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="/admin/magazines" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 

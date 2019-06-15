@@ -5,10 +5,10 @@
 <div class="py-5 container">
         <div class="row">
                 <div class="col-md-6">
-                    <h1 class="mb-3 display-4">جميع الأصدرات</h1>
+                    <h1 class="mb-3 display-4">جميع المقلات</h1>
                 </div>
                 <div class="col-md-6 clearfix">
-                    <a href="/channels/{{$id}}/magazines/create" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
+                    <a href="/channels/{}/magazines/{}/create" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
                 </div>
         
             </div>

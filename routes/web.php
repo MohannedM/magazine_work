@@ -23,4 +23,6 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::resource('/channels', 'ChannelsController');
 Route::resource('/admin/channels', 'AdminChannelsController');
-Route::resource('/channels/magazines', 'MagazinesController');
+Route::resource('/channels/{id}/magazines', 'MagazinesController');
+Route::resource('/admin/magazines', 'AdminMagazinesController');
+// Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');

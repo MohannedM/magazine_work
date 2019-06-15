@@ -54,6 +54,8 @@ class ChannelsController extends Controller
         $cover_name = time() . $file->getClientOriginalName();
         //Moving image to images folder
         $file->move('images', $cover_name);
+        //If the user was an admin the channel will be autmatically active
+        auth()->user()->is_admin == 1 ? $channel->is_active = 1 : $channel->is_active = 0;
         //Creating the new channel by the logged in user
         $channel->channel_name = $request->channel_name;
         $channel->cover_path = $cover_name;
@@ -78,7 +80,7 @@ class ChannelsController extends Controller
         //Find the specified channel
         $magazines = Channel::findOrFail($id)->magazines;
         //Return the channel with all its magazines relases
-        return view('magazines.index')->with('magazines', $magazines);
+        return view('magazines.index', compact('magazines', 'id'));
     }
 
     /**
