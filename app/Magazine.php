@@ -13,4 +13,7 @@ class Magazine extends Model
     public function articles(){
         return $this->hasMany('App\Article');
     }
+    public function channel(){
+        return $this->belongsTo('App\Channel');
+    }
 }

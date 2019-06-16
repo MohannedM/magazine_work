@@ -5,7 +5,7 @@
 <div class="row mt-5 col-md-10 offset-md-1">
         
             <div>
-                <h1 class="display-4 mb-3">المجالات</h1>
+                <h1 class="display-4 mb-3">جميع الاصدرات</h1>
             </div>
             @if(count($magazines)>0)
             <table class="table table-striped"">
@@ -14,6 +14,8 @@
                     <th>#</th>
                     <th>غلاف الإصدار</th>
                     <th>عنوان الإصدار</th>
+                    <th>مجلة الاصدار</th>
+                    <th>عدد المقالت</th>
                     <th>الإصدار PDF</th>
                     <th>تفعيل/ايقاف</th>
                     <th>مسح</th>
@@ -26,6 +28,8 @@
                         <td>{{$magazine->id}}</td>
                         <td><img src="/images/{{$magazine->cover_path}}" style="height:50px" class="img-fluid"></td>
                         <td><a href="/channels/{{$magazine->channel_id}}/magazines/{{$magazine->id}}">{{$magazine->magazine_name}}</a></td>
+                        <td><a href="/channels/{{$magazine->channel->id}}">{{$magazine->channel->channel_name}}</a></td>
+                        <td>{{count($magazine->articles)}}</td>
                         <td><a class="btn btn-info" target="_blank" href="/pdfs/{{$magazine->pdf_path}}">{{$magazine->magazine_name}} PDF</a></td>
                         <td>
 

@@ -1,6 +1,54 @@
 @extends('layouts.app')
 
-            @section('content')   
+            @section('content')
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                
+                
+                    <!-- main navber -->
+                    <div class="d-none d-sm-block">
+                        <nav class="navbar py-3">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="home-style-one.html" class="category01">الصفحة الرئيسية</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle category02" data-toggle="dropdown" aria-expanded="false">الاقسام<span class="pe-7s-angle-down"></span></a>
+                                        <ul class="dropdown-menu menu-slide"> 
+                                            @foreach ($categories as $category)
+                                            <li><a href="/categories/{{$category->id}}">{{$category->category_name}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    <li><a href="category-style-two.html" class="category04">موضة</a></li>
+                                    <li><a href="category-style-one.html" class="category05">سفر</a></li>
+                                    <li><a href="#" class="category06">طعام</a></li>
+                                    <li><a href="#" class="category07">تكنولوجيا</a></li>
+                                    <li><a href="#" class="category08">نمط الحياة</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle category09" data-toggle="dropdown">اتصال <span class="pe-7s-angle-down"></span></a>
+                                        <ul class="dropdown-menu menu-slide">
+                                            <li><a href="contact-style-one.html">الاتصال نمط واحد</a> </li>
+                                            <li><a href="contact-style-two.html">أسلوب الاتصال اثنين</a></li>
+                                        </ul>
+                                    </li>
+                                    @if(Auth::check())
+                                    <li><a href="/channels/create" class="category04">اضافة مجلة</a></li>
+                                    @endif
+                                    <li><a href="/articles/create" class="category01">اضافة مقالة</a></li>
+                                    <li><a href="channels/magazines/0/articles" class="category01">جميع المقلات</a></li>
+                                </ul>
+                            </div><!-- navbar-collapse -->
+                        </nav>
+                    </div>
+               
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    
+                </div>
+            </nav>
+       
             <div class="se-pre-con" style="display: none;"></div>
      
             <section class="news-feed">
@@ -734,12 +782,9 @@
                                 <div class="headding-border bg-color-2"></div>
                                 <div class="cats-widget">
                                     <ul>	
-                                        <li class=""><a href="#" title="Title goes here.">موضة</a> <span>12</span></li>
-                                        <li class=""><a href="#" title="Title goes here.">جمال</a> <span>9</span></li>
-                                        <li class=""><a href="#">سفر</a> <span>32</span></li>
-                                        <li class=""><a href="#" title="Title goes here.">نمط الحياة</a> <span>50</span></li>
-                                        <li class=""><a href="#">فيديو</a> <span>22</span></li>
-                                        <li class=""><a href="#">إلهام</a> <span>39</span></li>
+                                        @foreach ($categories as $category)
+                                        <li class=""><a href="/categories/{{$category->id}}" title="Title goes here.">{{$category->category_name}}</a> <span>{{count($category->articles)}}</span></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </aside>

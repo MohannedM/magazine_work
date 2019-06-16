@@ -29,17 +29,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
-            <li class="nav-item px-2">
-                <a href="index.html" class="nav-link active">الصفحة الرئيسية</a>
+            <li class="nav-item px-2 {{ Request::is('admin') ? 'active' : '' }}">
+                <a href="/admin" class="nav-link">الصفحة الرئيسية</a>
             </li>
-            <li class="nav-item px-2">
-                <a href="posts.html" class="nav-link">مجلات</a>
+            <li class="nav-item px-2 {{ Request::is('admin/channels') ? 'active' : '' }}">
+                <a href="/admin/channels" class="nav-link">المجلات</a>
             </li>
-            <li class="nav-item px-2">
-                <a href="categories.html" class="nav-link">الاقسام</a>
+            <li class="nav-item px-2 {{ Request::is('admin/magazines') ? 'active' : '' }}">
+                <a href="/admin/magazines" class="nav-link">الإصدرات</a>
             </li>
-            <li class="nav-item px-2">
-                <a href="users.html" class="nav-link">الكتاب</a>
+            <li class="nav-item px-2 {{ Request::is('admin/users') ? 'active' : '' }}">
+                <a href="/admin/users" class="nav-link">الكتاب</a>
+            </li>
+            <li class="nav-item px-2 {{ Request::is('admin/categories') ? 'active' : '' }}">
+                <a href="/admin/categories" class="nav-link">الاقسام</a>
+            </li>
+            <li class="nav-item px-2 {{ Request::is('admin/comments') ? 'active' : '' }}">
+                <a href="/admin/comments" class="nav-link">التعليقات</a>
             </li>
             </ul>
 

@@ -5,42 +5,40 @@
 <div class="row mt-5 col-md-10 offset-md-1">
         
             <div>
-                <h1 class="display-4 mb-3">المجالات</h1>
+                <h1 class="display-4 mb-3">الكتاب</h1>
             </div>
-            @if(count($channels)>0)
+            @if(count($users)>0)
             <table class="table table-striped"">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>غلاف المجالة</th>
-                    <th>اسم المجالة</th>
-                    <th>عدد الاصدرات</th>
-                    <th>تفعيل/ايقاف</th>
+                    <th>اسم الكاتب</th>
+                    <th>البريد الالكتروني</th>
+                    <th>تاريخ التسجيل</th>
+                    <th>مشرف\مستخدم</th>
                     <th>مسح</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($channels as $channel)
+                @foreach ($users as $user)
                     <tr>
-                        <td>{{$channel->id}}</td>
-                        <td><img src="/images/{{$channel->cover_path}}" style="height:50px" class="img-fluid"></td>
-                        <td><a href="/channels/{{$channel->id}}">{{$channel->channel_name}}</a></td>
-                        <td>{{count($channel->magazines)}}</td>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->first_name . ' ' . $user->last_name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->created_at->day}}/{{$user->created_at->month}}/{{$user->created_at->year}}</td>
                         <td>
-
-                           
-                            <form action="/admin/channels/{{$channel->id}}" method="POST">
+                            <form action="/admin/users/{{$user->id}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
-                                    <i class="far fa-edit"></i> {{$channel->is_active == 0 ? 'تفعيل' : 'إقاف'}} 
+                                    <i class="far fa-edit"></i> {{$user->is_admin == 0 ? 'مستخدم' : 'مشرف'}} 
                                 </button>
                             </form>
                             
                         </td>
                         <td>
-                        <form action="/admin/channels/{{$channel->id}}" method="POST">
+                        <form action="/admin/users/{{$user->id}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>

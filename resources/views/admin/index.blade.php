@@ -89,7 +89,7 @@
               <h5>
                 <i class="fas fa-users"></i> {{$users->count()}}
               </h4>
-              <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="/admin/users" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -99,7 +99,7 @@
               <h5>
                 <i class="fas fa-users"></i> {{$articles->count()}}
               </h4>
-              <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="/admin/articles" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -109,7 +109,7 @@
                 <h5>
                   <i class="fas fa-users"></i> {{$users->count()}}
                 </h4>
-                <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+                <a href="/admin/comments" class="btn btn-outline-light btn-sm">عرض</a>
               </div>
             </div>
 
@@ -120,7 +120,7 @@
                 <h5>
                   <i class="fas fa-users"></i> {{$users->count()}}
                 </h4>
-                <a href="users.html" class="btn btn-outline-light btn-sm">عرض</a>
+                <a href="/admin/replies" class="btn btn-outline-light btn-sm">عرض</a>
               </div>
             </div>
 

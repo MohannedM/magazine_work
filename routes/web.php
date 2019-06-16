@@ -26,5 +26,8 @@ Route::resource('/admin/magazines', 'AdminMagazinesController');
 Route::resource('/channels/magazines/{magazine_id}/articles', 'ArticlesController');
 Route::get('/articles/create', 'ArticlesController@createArticle');
 Route::resource('/admin/articles', 'AdminArticlesController');
+Route::resource('/admin/categories', 'AdminCategoriesController');
+Route::resource('/admin/users', 'AdminUsersController');
+Route::get('/categories/{id}', 'CategoriesController@show');
 
 // Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');
