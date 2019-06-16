@@ -26,7 +26,7 @@ class MagazineCreateRequest extends FormRequest
         return [
             //
             'magazine_name'=>'required',
-            'pdf_path'=>'required|mimes:png,jpg,jpeg,pdf|max:10000',
+            'pdf_path'=>'required|mimes:pdf',
             'cover_path'=>'required|mimes:png,jpg,jpeg|max:10000'
         ];
     }

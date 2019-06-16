@@ -164,6 +164,7 @@
                                     <li><a href="/channels/create" class="category04">اضافة مجلة</a></li>
                                     @endif
                                     <li><a href="/articles/create" class="category01">اضافة مقالة</a></li>
+                                    <li><a href="channels/magazines/0/articles" class="category01">جميع المقلات</a></li>
                                 </ul>
                             </div><!-- navbar-collapse -->
                         </nav>

@@ -20,7 +20,7 @@ class ArticlesController extends Controller
     {
         //
         $articles = Article::where('is_active', '1')->get();
-        return view('articles.index')->with('articles');
+        return view('articles.index')->with('articles', $articles);
     }
 
     /**
