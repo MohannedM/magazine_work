@@ -9,6 +9,12 @@
                 <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid w-50">
             </div>
             <span class="badge badge-secondary">{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</span><br>
+            @if (count($article->photos)>0)
+                @foreach ($article->photos as $photo)
+                <img src="/images/{{$photo->path}}" style="height:150px;width:150px" alt="">
+                @endforeach
+                
+            @endif
             <p class="lead">{{$article->article_content}}</p>
             <span class="badge badge-success"> الكاتب {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}}</span><br>
         </div>

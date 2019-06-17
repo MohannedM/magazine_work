@@ -70,8 +70,9 @@ class ArticlesController extends Controller
         $article->article_content = $request->article_content;
         $article->category_id = $request->category_id;
         $article->save();
+
         if($request->magazine_id != 0){
-            return redirect('channels/'. $request->channel_id .'/magazines/'.$request->magazine_id);
+            return redirect('/articles/'. $article->id .'/photos');
         }
         return redirect('/');  
     }

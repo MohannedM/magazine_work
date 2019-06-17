@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateArticleRequest extends FormRequest
+class CreatePhotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class CreateArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'username'=>'required',
-            'comment_content'=>'required'
+            'path'=>'required|mimes:png,jpg,jpeg|max:10000',
         ];
     }
 }
