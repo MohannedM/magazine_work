@@ -19,6 +19,7 @@ class ArticlesController extends Controller
     public function index()
     {
         //
+
         $articles = Article::where('is_active', '1')->get();
         return view('articles.index')->with('articles', $articles);
     }
@@ -85,10 +86,11 @@ class ArticlesController extends Controller
     {
         //
         $article = Article::findOrFail($id);
+        $comments = $article->comments->where('is_active',1)->all();
         if($article->is_active != 1){
             return redirect('/');
         }
-        return view('articles.show')->with('article', $article);
+        return view('articles.show', compact('article', 'comments'));
     }
 
     /**

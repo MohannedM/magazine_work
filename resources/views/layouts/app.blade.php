@@ -34,7 +34,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                <div class="col-md-1 mr-auto align-self-center">
+                                <div class="col-md-3 mr-auto align-self-center">
                                     <div class="top_header_menu_wrap">
                                         <ul class="top-header-menu">
                                               <!-- Authentication Links -->

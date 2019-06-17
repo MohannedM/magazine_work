@@ -25852,14 +25852,6 @@ html {
   overflow-x: hidden;
 }
 
-.top-header-menu li a {
-  font-size: 15px;
-}
-
-.td-retina-data {
-  height: 50px;
-}
-
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
