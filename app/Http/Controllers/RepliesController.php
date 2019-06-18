@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CreateCommentRequest;
-use App\Article;
+use Illuminate\Http\Request;
 use App\Comment;
-
-class CommentsController extends Controller
+use App\Reply;
+use App\Article;
+class RepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
- 
+         
+        
     }
 
     /**
@@ -36,19 +36,20 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentRequest $request, $article_id)
+    public function store(Request $request, $comment_id)
     {
-    
-        $article = Article::findOrFail($article_id);
-        $comment =new Comment;
-        $comment->comment_content = $request->comment_content;
-        $comment->username=$request->username;
+        
+         $comment = Comment::findOrFail($comment_id);
+         $reply =new Reply;
+        $reply->reply_content = $request->reply_content;
+        $reply->username=$request->username;
         if(Auth::check()){
-        auth()->user()->is_admin == 1 ? $comment->is_active = 1 : $comment->is_active = 0;
+        auth()->user()->is_admin == 1 ? $reply->is_active = 1 : $reply->is_active = 0;
         }
-           $article->comments()->save($comment);
+             $comment->replies()->save($reply);
             
-           return back();
+          return back();
+     
     }
 
     /**
@@ -59,7 +60,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

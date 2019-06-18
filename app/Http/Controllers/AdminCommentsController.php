@@ -3,21 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\CreateCommentRequest;
-use App\Article;
 use App\Comment;
+use App\Article;
 
-class CommentsController extends Controller
+class AdminCommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('Admin');
+    }
+
     public function index()
     {
- 
+        $comments=Comment::all();
+        $article=Article::all();
+     
+    
+        return view('admin.comments.index',compact('comments','article'));
+
     }
 
     /**
@@ -36,19 +46,9 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCommentRequest $request, $article_id)
+    public function store(Request $request)
     {
-    
-        $article = Article::findOrFail($article_id);
-        $comment =new Comment;
-        $comment->comment_content = $request->comment_content;
-        $comment->username=$request->username;
-        if(Auth::check()){
-        auth()->user()->is_admin == 1 ? $comment->is_active = 1 : $comment->is_active = 0;
-        }
-           $article->comments()->save($comment);
-            
-           return back();
+        //
     }
 
     /**
@@ -82,7 +82,11 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        //Check its status and reverse it
+        $comment->is_active == 0 ? $comment->is_active = 1 : $comment->is_active = 0;
+        $comment->save();
+        return back();
     }
 
     /**
@@ -93,6 +97,8 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+          Comment::findOrFail($id)->delete();
+          return back();
     }
 }

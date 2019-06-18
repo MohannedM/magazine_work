@@ -8,6 +8,7 @@ use App\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Magazine;
 use App\Category;
+use App\Comment;
 
 class ArticlesController extends Controller
 {
@@ -87,7 +88,7 @@ class ArticlesController extends Controller
     {
         //
         $article = Article::findOrFail($id);
-        $comments = $article->comments->where('is_active',1)->all();
+        $comments = $article->comments()->where('is_active',1)->orderBy('created_at', 'desc')->get();
         if($article->is_active != 1){
             return redirect('/');
         }
