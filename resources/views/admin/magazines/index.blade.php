@@ -16,6 +16,7 @@
                     <th>عنوان الإصدار</th>
                     <th>مجلة الاصدار</th>
                     <th>عدد المقالت</th>
+                    <th>اضافة رعاة</th>
                     <th>الإصدار PDF</th>
                     <th>تفعيل/ايقاف</th>
                     <th>مسح</th>
@@ -30,6 +31,7 @@
                         <td><a href="/channels/{{$magazine->channel_id}}/magazines/{{$magazine->id}}">{{$magazine->magazine_name}}</a></td>
                         <td><a href="/channels/{{$magazine->channel->id}}">{{$magazine->channel->channel_name}}</a></td>
                         <td>{{count($magazine->articles)}}</td>
+                        <td><a href="/admin/magazines/{{$magazine->id}}/sponsors" class="btn btn-primary">اضافة رعاة</a></td>
                         <td><a class="btn btn-info" target="_blank" href="/pdfs/{{$magazine->pdf_path}}">{{$magazine->magazine_name}} PDF</a></td>
                         <td>
 

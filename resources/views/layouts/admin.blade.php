@@ -106,12 +106,8 @@
     crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
+    @yield('scripts')
 
-    CKEDITOR.replace('editor1');
-    </script>
 </body>
 </html>
     

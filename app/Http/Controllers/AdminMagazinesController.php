@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Magazine;
+use App\Sponsor;
 
 class AdminMagazinesController extends Controller
 {
@@ -65,6 +66,25 @@ class AdminMagazinesController extends Controller
     public function edit($id)
     {
         //
+    }
+    public function addSponsor($magazine_id){
+        $sponsors = Sponsor::all();
+        $magazine = Magazine::findOrFail($magazine_id);
+        return view('admin.magazines.sponsors', compact('sponsors', 'magazine'));
+    }
+    public function attachSponsor(Request $request,$magazine_id, $sponsor_id){
+        $sponsor = Sponsor::findOrFail($sponsor_id);
+        $magazine = Magazine::findOrFail($magazine_id);
+        if (! $magazine->sponsors->contains($sponsor_id)) {
+            $magazine->sponsors()->attach($sponsor);
+        }
+        return redirect('/admin/magazines/'.$magazine_id.'/sponsors');
+    }
+    public function detachSponsor(Request $request,$magazine_id, $sponsor_id){
+        $sponsor = Sponsor::findOrFail($sponsor_id);
+        $magazine = Magazine::findOrFail($magazine_id);
+        $magazine->sponsors()->detach($sponsor);
+        return redirect('/admin/magazines/'.$magazine_id.'/sponsors');
     }
 
     /**
