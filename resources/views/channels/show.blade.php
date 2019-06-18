@@ -8,7 +8,7 @@
                     <h1 class="mb-3 display-4">جميع الأصدرات</h1>
                 </div>
                 <div class="col-md-6 clearfix">
-                    <a href="/channels/{{$id}}/magazines/create" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
+                    <a href="{{route('magazines.create', ['channel_id' => $channel_id])}}" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
                 </div>
         
             </div>
@@ -17,7 +17,7 @@
             @foreach ($magazines as $magazine)
                 <div class="col-md-4 my-3">
                     <div class="card border border-secondary">
-                        <a href="/channels/{{$magazine->channel_id}}/magazines/{{$magazine->id}}">
+                        <a href="{{route('magazines.show', ['channel_id'=>$channel_id, 'magazine'=>$magazine->id])}}">
                         <img src="/images/{{$magazine->cover_path}}" alt="" class="img-fluid card-img">
                         </a>
                         <div class="card-body">

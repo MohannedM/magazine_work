@@ -71,7 +71,9 @@ class AdminArticlesController extends Controller
     {
         //
         $article = Article::findOrFail($id);
+        //Change active state to the oppisite
         $article->is_active == 1 ? $article->is_active = 0 : $article->is_active = 1;
+        //Saving and redirecting back
         $article->save();
         return redirect('/admin');
     }

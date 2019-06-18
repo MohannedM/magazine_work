@@ -9,7 +9,7 @@
                         <nav class="navbar py-3">
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="home-style-one.html" class="category01">الصفحة الرئيسية</a></li>
+                                    <li class="active"><a href="/" class="category01">الصفحة الرئيسية</a></li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle category02" data-toggle="dropdown" aria-expanded="false">الاقسام<span class="pe-7s-angle-down"></span></a>
                                         <ul class="dropdown-menu menu-slide"> 
@@ -18,7 +18,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="category-style-two.html" class="category04">موضة</a></li>
+                                    <li><a href="{{ route('channels.index')}}" class="category04">جميع المجلات</a></li>
                                     <li><a href="category-style-one.html" class="category05">سفر</a></li>
                                     <li><a href="#" class="category06">طعام</a></li>
                                     <li><a href="#" class="category07">تكنولوجيا</a></li>
@@ -31,7 +31,7 @@
                                         </ul>
                                     </li>
                                     @if(Auth::check())
-                                    <li><a href="/channels/create" class="category04">اضافة مجلة</a></li>
+                                    <li><a href="{{route('channels.create')}}" class="category04">اضافة مجلة</a></li>
                                     @endif
                                     <li><a href="/articles/create" class="category01">اضافة مقالة</a></li>
                                     <li><a href="channels/magazines/0/articles" class="category01">جميع المقلات</a></li>

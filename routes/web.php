@@ -16,16 +16,14 @@ Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/admin', 'AdminController@index')->name('admin');
-
 Route::resource('/channels', 'ChannelsController');
-Route::resource('/admin/channels', 'AdminChannelsController');
+Route::resource('/admin/channels', 'AdminChannelsController', ['as'=>'admin']);
 Route::resource('/channels/{channel_id}/magazines', 'MagazinesController');
-Route::resource('/admin/magazines', 'AdminMagazinesController');
-Route::resource('/channels/magazines/{magazine_id}/articles', 'ArticlesController');
+Route::resource('/admin/magazines', 'AdminMagazinesController', ['as'=>'admin']);
+Route::resource('/magazines/{magazine_id}/articles', 'ArticlesController');
 Route::get('/articles/create', 'ArticlesController@createArticle');
-Route::resource('/admin/articles', 'AdminArticlesController');
+Route::resource('/admin/articles', 'AdminArticlesController', ['as'=>'admin']);
 Route::resource('/admin/categories', 'AdminCategoriesController');
 Route::resource('/admin/users', 'AdminUsersController');
 Route::get('/categories/{id}', 'CategoriesController@show');

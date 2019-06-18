@@ -25,8 +25,7 @@ class MagazinesController extends Controller
     public function index($channel_id)
     {
         $magazines = Magazine::all();
-        $id = $channel_id;
-        return view('magazines.index', compact('magazines', 'id'));
+        return view('magazines.index', compact('magazines', 'channel_id'));
     }
 
     /**
@@ -53,7 +52,6 @@ class MagazinesController extends Controller
         //Finding and instantiating needed objects
         $channel = Channel::findOrFail($request->channel_id);
         $magazine = new Magazine;
-
         $magazine->magazine_name = $request->magazine_name;
 
          //Asigning the uploaded file to variables

@@ -78,6 +78,7 @@ class AdminUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
+        //Checking if user is admin and reversing it
         $user->is_admin == 0 ? $user->is_admin = 1 : $user->is_admin = 0;
         $user->save();
         return redirect('/admin/users');

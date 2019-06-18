@@ -38,11 +38,12 @@ class CommentsController extends Controller
      */
     public function store(CreateCommentRequest $request, $article_id)
     {
-    
+        
         $article = Article::findOrFail($article_id);
         $comment =new Comment;
         $comment->comment_content = $request->comment_content;
         $comment->username=$request->username;
+        //Checking if the logged in user is an admin and if so status will be active and its delault if there is no logged in user is zero
         if(Auth::check()){
         auth()->user()->is_admin == 1 ? $comment->is_active = 1 : $comment->is_active = 0;
         }

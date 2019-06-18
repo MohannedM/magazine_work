@@ -75,6 +75,7 @@ class AdminMagazinesController extends Controller
     public function attachSponsor(Request $request,$magazine_id, $sponsor_id){
         $sponsor = Sponsor::findOrFail($sponsor_id);
         $magazine = Magazine::findOrFail($magazine_id);
+        //Attach the sponsor to the magazine only if it doesn't have it
         if (! $magazine->sponsors->contains($sponsor_id)) {
             $magazine->sponsors()->attach($sponsor);
         }
@@ -98,7 +99,7 @@ class AdminMagazinesController extends Controller
     {
         //
         $magazine = Magazine::findOrFail($id);
-        //Change activation status
+        //check activation status and reverse it
         $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
         $magazine->save();
         return redirect('/admin/magazines');

@@ -5,7 +5,7 @@
 <div class="py-5">
     <div class="container">
         <h1 class="display-4">اضف مجلة</h1>
-        <form action="/channels" method="POST" enctype="multipart/form-data">
+        <form action="{{route('channels.store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="magazine_name">اسم المجلة</label>

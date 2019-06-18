@@ -75,12 +75,12 @@ class ChannelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($channel_id)
     {
         //Find the specified channel
-        $magazines = Channel::findOrFail($id)->magazines()->where('is_active',1)->get();
+        $magazines = Channel::findOrFail($channel_id)->magazines()->where('is_active',1)->get();
         //Return the channel with all its magazines relases
-        return view('channels.show', compact('magazines', 'id'));
+        return view('channels.show', compact('magazines', 'channel_id'));
     }
 
     /**
