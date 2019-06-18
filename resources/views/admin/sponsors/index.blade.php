@@ -16,6 +16,7 @@
                             <th>اسم الراعي</th>
                             <th>عددالاصدرات المدعومة</th>
                             <th>شعار الراعي</th>
+                            <th>تعديل</th>
                             <th>مسح</th>
         
                         </tr>
@@ -27,6 +28,7 @@
                                 <td>{{$sponsor->name}}</td>
                                 <td>{{count($sponsor->magazines)}}</td>
                                 <td><img src="/images/{{$sponsor->logo_path}}" style="height:50px;width:50px" alt=""></td>
+                                <td><a href="/admin/sponsors/{{$sponsor->id}}/edit" class="btn btn-secondary">تعديل</a></td>
                                 <td>
                                 <form action="/admin/sponsors/{{$sponsor->id}}" method="POST">
                                     {{csrf_field()}}

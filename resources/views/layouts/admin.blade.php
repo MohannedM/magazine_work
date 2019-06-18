@@ -93,9 +93,24 @@
         </div>
     </header>
     
-    <div class="py-5">
+    <div class="py-5 clearfix">
         @yield('content')
     </div>
+     <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p class="lead text-center">
+                Copyright &copy;
+                <span id="year"></span>
+                Blogen
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
 
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

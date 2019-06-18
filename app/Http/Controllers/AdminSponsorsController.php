@@ -78,6 +78,8 @@ class AdminSponsorsController extends Controller
     public function edit($id)
     {
         //
+        $sponsor = Sponsor::findOrFail($id);
+        return view('admin.sponsors.edit', compact('sponsor'));
     }
 
     /**
@@ -90,6 +92,19 @@ class AdminSponsorsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $sponsor = Sponsor::findOrFail($id);
+        if($request->has('logo_path')){
+            //Asigning the uploaded image to a variable
+            $file = $request->logo_path;
+            //Asigining the image a new name
+            $logo_name = time() . $file->getClientOriginalName();
+            //Moving image to images folder and saving in database
+            $file->move('images', $logo_name);
+            $sponsor->logo_path = $logo_name;
+        }
+        $sponsor->name = $request->name;
+        $sponsor->save();
+        return redirect('/admin/sponsors');
     }
 
     /**
