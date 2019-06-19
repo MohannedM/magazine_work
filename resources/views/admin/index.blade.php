@@ -30,13 +30,13 @@
                 @foreach($articles as $article)
                 <tr>
                   <td>{{$article->id}}</td>
-                  <td><a href="/channels/magazines/{{$article->magazine_id}}/articles/{{$article->id}}">{{$article->article_title}}</a></td>
+                  <td><a href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">{{$article->article_title}}</a></td>
                   <td>القسم</td>
                   <td>{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</td>
                   <td>
 
                            
-                      <form action="/admin/articles/{{$article->id}}" method="POST">
+                      <form action="{{route('admin.articles.update', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}" method="POST">
                           {{csrf_field()}}
                           <input type="hidden" name="_method" value="PUT">
                           <button type="submit" class="btn btn-secondary">
@@ -46,7 +46,7 @@
                       
                   </td>
                   <td>     
-                      <form action="/admin/articles/{{$article->id}}" method="POST">
+                      <form action="{{'admin.articles.delete', ['article'=>$article->id]}}" method="POST">
                           {{csrf_field()}}
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger">
@@ -69,7 +69,7 @@
               <h5>
                 <i class="fas fa-pencil-alt"></i> {{$channels->count()}}
               </h4>
-              <a href="/admin/channels" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="{{route('admin.channels.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -79,7 +79,7 @@
               <h5>
                 <i class="fas fa-folder"></i> {{$magazines->count()}}
               </h4>
-              <a href="/admin/magazines" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="{{route('admin.magazines.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -89,7 +89,7 @@
               <h5>
                 <i class="fas fa-users"></i> {{$users->count()}}
               </h4>
-              <a href="/admin/users" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="{{route('admin.users.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -99,7 +99,7 @@
               <h5>
                 <i class="fas fa-users"></i> {{$articles->count()}}
               </h4>
-              <a href="/admin/articles" class="btn btn-outline-light btn-sm">عرض</a>
+              <a href="{{route('admin.articles.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
             </div>
           </div>
 
@@ -107,20 +107,20 @@
               <div class="card-body">
                 <h3>عدد التعليقات</h3>
                 <h5>
-                  <i class="fas fa-users"></i> {{$users->count()}}
+                  <i class="fas fa-users"></i> {{$comments->count()}}
                 </h4>
-                <a href="/admin/comments" class="btn btn-outline-light btn-sm">عرض</a>
+                <a href="{{route('admin.comments.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
               </div>
             </div>
 
             
             <div class="card text-center bg-secondary text-white mb-3">
               <div class="card-body">
-                <h3>عدد الردود</h3>
+                <h3>عدد الرعاة</h3>
                 <h5>
-                  <i class="fas fa-users"></i> {{$users->count()}}
+                  <i class="fas fa-users"></i> {{$sponsors->count()}}
                 </h4>
-                <a href="/admin/replies" class="btn btn-outline-light btn-sm">عرض</a>
+                <a href="{{route('admin.sponsors.index')}}" class="btn btn-outline-light btn-sm">عرض</a>
               </div>
             </div>
 

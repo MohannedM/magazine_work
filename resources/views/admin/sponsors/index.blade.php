@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div id="sponsorsIndex">
+<div>
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-8">
@@ -28,9 +28,9 @@
                                 <td>{{$sponsor->name}}</td>
                                 <td>{{count($sponsor->magazines)}}</td>
                                 <td><img src="/images/{{$sponsor->logo_path}}" style="height:50px;width:50px" alt=""></td>
-                                <td><a href="/admin/sponsors/{{$sponsor->id}}/edit" class="btn btn-secondary">تعديل</a></td>
+                                <td><a href="{{route('admin.sponsors.edit', ['sponsor'=>$sponsor->id])}}" class="btn btn-secondary">تعديل</a></td>
                                 <td>
-                                <form action="/admin/sponsors/{{$sponsor->id}}" method="POST">
+                                <form action="{{route('admin.sponsors.destroy', ['sponsor'=>$sponsor->id])}}" method="POST">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-md-4" v-if="!edit">
                     <h4>أضاف راعي</h4>
-                    <form action="/admin/sponsors" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.users.store')}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="name">أسم الراعي</label>

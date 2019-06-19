@@ -30,7 +30,8 @@
                             <td>{{count($sponsor->magazines)}}</td>
                             <td><img src="/images/{{$sponsor->logo_path}}" style="height:50px;width:50px" alt=""></td>
                             <td>
-                            <form action="/admin/magazines/{{$magazine->id}}/{{ $sponsor->magazines->contains($magazine->id) ? 'detach': 'attach'}}/{{$sponsor->id}}" method="POST">
+                            <form action="{{$sponsor->magazines->contains($magazine->id) ? route('sponsor.detach', ['magazine_id'=>$magazine->id, 'sponsor_id'=>$sponsor->id])}}" method="POST">
+                                {{-- <form action="/admin/magazines/{{$magazine->id}}/{{ $sponsor->magazines->contains($magazine->id) ? 'detach': 'attach'}}/{{$sponsor->id}}" method="POST"> --}}
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-times"></i> {{ $sponsor->magazines->contains($magazine->id) ? 'حذف الراعي': 'تعين كارعي'}}</button>

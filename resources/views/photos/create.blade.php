@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-        <form action="/articles/{{$article_id}}/photos" method="POST" id="photos-form" enctype="multipart/form-data">
+        <form action="{{route('photos.store', ['article_id'=>$article_id])}}" method="POST" id="photos-form" enctype="multipart/form-data">
             {{csrf_field()}}
                 <div class="form-group">
                     <label for="cover_path">اضف صورة</label>
@@ -26,11 +26,11 @@
                 
                 
                 
-                                        <input type="submit" value="اضف الصور" class="btn btn-primary">
-                                        <a href="/channels/magazines/0/articles" class="btn btn-dark float-left">تخطي هذه المرحلة</a>
-                                        
-                                    </form>
-                                </div>
+                        <input type="submit" value="اضف الصور" class="btn btn-primary">
+                        <a href="{{route('articles.index', ['magazine_id'=>0])}}" class="btn btn-dark float-left">التالي</a>
+                        
+                    </form>
+                </div>
     </div>
 </div>
 

@@ -92,6 +92,31 @@ class AdminChannelsController extends Controller
      */
     public function destroy($id)
     {
+        // //Find the channel
+        // $channel = Channel::findOrFail($id);
+        // //Find its magazines 
+        // $magazines = $channel->magazines()->get();
+        // // delete the magazines' articles
+        // foreach($magazines as $magazine){
+        //     //find the magazines' articles
+        //     $articles = $magazine->articles()->get();
+        //     foreach($articles as $article){
+        //         //Find the article comments
+        //         $comments = $article->comments()->get();
+        //         foreach($comments as $comment){
+        //         //finding comments' replies and deleting them
+        //         $comment->replies()->delete();
+        //         }
+        //         //Deleting articles' comments
+        //         $article->comments()->delete();
+        //     }
+        //     //Delete the magazine articles
+        //     $magazine->articles()->delete();
+        // }
+        // //Delete the magazines 
+        // $channel->magazines()->delete();
+        // //Delete the whole channel
+                // $channel->delete();
         //
         Channel::findOrFail($id)->delete();
         return redirect('/admin/channels');

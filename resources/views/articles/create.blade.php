@@ -5,7 +5,7 @@
 <div class="py-5">
     <div class="container">
         <h1 class="display-4">اضف مقالة</h1>
-        <form action="/channels/magazines/{{$magazine_id}}/articles" method="POST" enctype="multipart/form-data">
+        <form action="{{route('articles.store', ['magazine_id'=>$magazine_id])}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="form-group mb-3">

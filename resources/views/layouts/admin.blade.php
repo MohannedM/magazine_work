@@ -23,29 +23,29 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
         <div class="container">
-        <a href="index.html" class="navbar-brand">المجلة</a>
+        <a href="/" class="navbar-brand">المجلة</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
             <li class="nav-item px-2 {{ Request::is('admin') ? 'active' : '' }}">
-                <a href="/admin" class="nav-link">الصفحة الرئيسية</a>
+                <a href="{{route('admin')}}" class="nav-link">الصفحة الرئيسية</a>
             </li>
             <li class="nav-item px-2 {{ Request::is('admin/channels') ? 'active' : '' }}">
-                <a href="/admin/channels" class="nav-link">المجلات</a>
+                <a href="{{route('admin.channels.index')}}" class="nav-link">المجلات</a>
             </li>
             <li class="nav-item px-2 {{ Request::is('admin/magazines') ? 'active' : '' }}">
-                <a href="/admin/magazines" class="nav-link">الإصدرات</a>
+                <a href="{{route('admin.magazines.index')}}" class="nav-link">الإصدرات</a>
             </li>
             <li class="nav-item px-2 {{ Request::is('admin/users') ? 'active' : '' }}">
-                <a href="/admin/users" class="nav-link">الكتاب</a>
+                <a href="{{route('admin.users.index')}}" class="nav-link">الكتاب</a>
             </li>
             <li class="nav-item px-2 {{ Request::is('admin/categories') ? 'active' : '' }}">
-                <a href="/admin/categories" class="nav-link">الاقسام</a>
+                <a href="{{route('admin.categories.index')}}" class="nav-link">الاقسام</a>
             </li>
             <li class="nav-item px-2 {{ Request::is('admin/comments') ? 'active' : '' }}">
-                <a href="/admin/comments" class="nav-link">التعليقات</a>
+                <a href="{{route('admin.comments.index')}}" class="nav-link">التعليقات</a>
             </li>
             </ul>
 

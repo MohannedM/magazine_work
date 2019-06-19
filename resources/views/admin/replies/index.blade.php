@@ -31,7 +31,7 @@
                         <td>
 
                            
-                            <form action="/admin/replies/{{$reply->id}}" method="POST">
+                            <form action="{{route('admin.replies.update', ['reply'=>$reply->id])}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
@@ -41,7 +41,7 @@
                             
                         </td>
                         <td>
-                        <form action="/admin/replies/{{$reply->id}}" method="POST">
+                        <form action="{{route('admin.replies.destroy', ['reply'=>$reply->id])}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>

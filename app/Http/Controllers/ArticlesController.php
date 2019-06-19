@@ -66,6 +66,8 @@ class ArticlesController extends Controller
         //Check if user is logged in
         $user = Auth::user();
         $user ? $article->user_id = $user->id : $article->user_id = 0;
+        //If user is admin it will be autmatically active
+        $user->is_admin == 1 ? $article->is_active = 1 : $article->is_active = 0;
         //Assign the rest of information
         $article->article_title = $request->article_title;
         $article->article_content = $request->article_content;
@@ -75,7 +77,7 @@ class ArticlesController extends Controller
         if($request->magazine_id != 0){
             return redirect('/articles/'. $article->id .'/photos');
         }
-        return redirect('/');  
+        return redirect()->route('photos.create', ['article_id'=>$article->id]); 
     }
 
     /**

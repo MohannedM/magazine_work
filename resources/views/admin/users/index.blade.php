@@ -28,7 +28,7 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->created_at->day}}/{{$user->created_at->month}}/{{$user->created_at->year}}</td>
                         <td>
-                            <form action="/admin/users/{{$user->id}}" method="POST">
+                            <form action="{{route('admin.users.update', ['user'=>$user->id])}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
@@ -38,7 +38,7 @@
                             
                         </td>
                         <td>
-                        <form action="/admin/users/{{$user->id}}" method="POST">
+                        <form action="{{route('admin.users.destroy', ['user'=>$user->id])}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>

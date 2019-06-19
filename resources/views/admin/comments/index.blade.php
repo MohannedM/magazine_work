@@ -28,7 +28,7 @@
                         <td>{{$comment->article->article_title}}</td>
                         <td>{{$comment->username}}</td>
                         <td>{{$comment->comment_content}}</td>
-                        <td><a {{ count($comment->replies)> 0 ? 'href=/admin/replies/'. $comment->id : '' }}  >{{count($comment->replies)}}</a></td>
+                        <td><a {{ count($comment->replies) > 0 ? 'href=/admin/replies/'. $comment->id : '' }}  >{{count($comment->replies)}}</a></td>
                     
 
                         <td>

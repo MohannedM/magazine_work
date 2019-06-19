@@ -25,12 +25,12 @@
                     <tr>
                         <td>{{$channel->id}}</td>
                         <td><img src="/images/{{$channel->cover_path}}" style="height:50px" class="img-fluid"></td>
-                        <td><a href="/channels/{{$channel->id}}">{{$channel->channel_name}}</a></td>
+                        <td><a href="{{route('channels.show', ['channel'=> $channel->id])}}">{{$channel->channel_name}}</a></td>
                         <td>{{count($channel->magazines)}}</td>
                         <td>
 
                            
-                            <form action="/admin/channels/{{$channel->id}}" method="POST">
+                            <form action="{{route('admin.channels.update', ['channel'=>$channel->id])}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
@@ -40,7 +40,7 @@
                             
                         </td>
                         <td>
-                        <form action="/admin/channels/{{$channel->id}}" method="POST">
+                        <form action="{{route('admin.channels.destroy', ['channel'=>$channel->id])}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>

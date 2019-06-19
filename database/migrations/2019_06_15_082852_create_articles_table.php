@@ -17,11 +17,13 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('article_title');
             $table->text('article_content');
-            $table->integer('user_id')->default(0);
-            $table->integer('magazine_id')->default(0);
-            $table->tinyInteger('category_id');
+            $table->integer('user_id')->unsigned()->default(0);
+            $table->integer('magazine_id')->unsigned()->default(0);
+            $table->integer('category_id')->unsigned();
             $table->text('article_cover');
             $table->tinyInteger('is_active')->default(0);
+            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

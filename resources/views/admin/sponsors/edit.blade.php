@@ -4,7 +4,7 @@
     <div class="container">
         <h1 class="display-4">تعديل الراعي</h1>
         <div class="mt-3">
-                <form action="/admin/sponsors/{{$sponsor->id}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.sponsors.update', ['sponsor'=>$sponsor->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">

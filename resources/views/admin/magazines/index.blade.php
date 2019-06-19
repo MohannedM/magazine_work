@@ -28,15 +28,15 @@
                     <tr>
                         <td>{{$magazine->id}}</td>
                         <td><img src="/images/{{$magazine->cover_path}}" style="height:50px" class="img-fluid"></td>
-                        <td><a href="/channels/{{$magazine->channel_id}}/magazines/{{$magazine->id}}">{{$magazine->magazine_name}}</a></td>
-                        <td><a href="/channels/{{$magazine->channel->id}}">{{$magazine->channel->channel_name}}</a></td>
+                        <td><a href="{{route('magazines.show', ['channel_id'=>$magazine->channel_id, 'magazine'=>$magazine->id])}}">{{$magazine->magazine_name}}</a></td>
+                        <td><a href="{{route('channels.show', ['channel'=>$magazine->channel_id])}}">{{$magazine->channel->channel_name}}</a></td>
                         <td>{{count($magazine->articles)}}</td>
-                        <td><a href="/admin/magazines/{{$magazine->id}}/sponsors" class="btn btn-primary">اضافة رعاة</a></td>
+                        <td><a href="{{route('magazine.sponsors', ['magazine_id'=>$magazine->id])}}" class="btn btn-primary">اضافة رعاة</a></td>
                         <td><a class="btn btn-info" target="_blank" href="/pdfs/{{$magazine->pdf_path}}">{{$magazine->magazine_name}} PDF</a></td>
                         <td>
 
                            
-                            <form action="/admin/magazines/{{$magazine->id}}" method="POST">
+                            <form action="{{route('admin.magazines.update', ['magazine'=>$magazine->id])}}" method="POST">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-secondary">
@@ -46,7 +46,7 @@
                             
                         </td>
                         <td>
-                        <form action="/admin/magazines/{{$magazine->id}}" method="POST">
+                        <form action="{{route('admin.magazines.destroy', ['magazine'=>$magazine->id])}}" method="POST">
                             {{csrf_field()}}
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i> مسح</button>

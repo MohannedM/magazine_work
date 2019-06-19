@@ -14,7 +14,7 @@
                                         <a href="#" class="dropdown-toggle category02" data-toggle="dropdown" aria-expanded="false">الاقسام<span class="pe-7s-angle-down"></span></a>
                                         <ul class="dropdown-menu menu-slide"> 
                                             @foreach ($categories as $category)
-                                            <li><a href="/categories/{{$category->id}}">{{$category->category_name}}</a></li>
+                                            <li><a href="{{route('categories.show', ['category'=>$category->id])}}">{{$category->category_name}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -33,8 +33,8 @@
                                     @if(Auth::check())
                                     <li><a href="{{route('channels.create')}}" class="category04">اضافة مجلة</a></li>
                                     @endif
-                                    <li><a href="/articles/create" class="category01">اضافة مقالة</a></li>
-                                    <li><a href="channels/magazines/0/articles" class="category01">جميع المقلات</a></li>
+                                    <li><a href="{{route('create_article')}}" class="category01">اضافة مقالة</a></li>
+                                    <li><a href="{{route('articles.index', ['magazine_id'=>0])}}" class="category01">جميع المقلات</a></li>
                                 </ul>
                             </div><!-- navbar-collapse -->
                         </nav>
@@ -783,7 +783,7 @@
                                 <div class="cats-widget">
                                     <ul>	
                                         @foreach ($categories as $category)
-                                        <li class=""><a href="/categories/{{$category->id}}" title="Title goes here.">{{$category->category_name}}</a> <span>{{count($category->articles)}}</span></li>
+                                        <li class=""><a href="{{route('categories.show', ['category'=>$category->id])}}" title="Title goes here.">{{$category->category_name}}</a> <span>{{count($category->articles)}}</span></li>
                                         @endforeach
                                     </ul>
                                 </div>
