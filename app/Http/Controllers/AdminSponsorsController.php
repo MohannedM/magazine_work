@@ -54,7 +54,7 @@ class AdminSponsorsController extends Controller
         $file->move('images', $logo_name);
         $sponsor->logo_path = $logo_name;
         $sponsor->save();
-        return redirect('/admin/sponsors');
+        return redirect('/admin/sponsors')->with('success', 'تم اضافة الراعي بنجاح.');;
         
     }
 
@@ -117,6 +117,6 @@ class AdminSponsorsController extends Controller
     {
         //
         Sponsor::findOrFail($id)->delete();
-        return redirect('/admin/sponsors');
+        return back();
     }
 }

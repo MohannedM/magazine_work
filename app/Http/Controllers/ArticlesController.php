@@ -77,7 +77,7 @@ class ArticlesController extends Controller
         if($request->magazine_id != 0){
             return redirect('/articles/'. $article->id .'/photos');
         }
-        return redirect()->route('photos.create', ['article_id'=>$article->id]); 
+        return redirect()->route('photos.create', ['article_id'=>$article->id])->with('success','تم اضافة المقالة بنجاح.');
     }
 
     /**

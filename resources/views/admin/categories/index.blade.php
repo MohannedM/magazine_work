@@ -3,6 +3,7 @@
     
 <div class="container">
     <div class="row mt-5">
+        @include('includes.messages')
         <div class="col-md-8">
                 
                 <div>

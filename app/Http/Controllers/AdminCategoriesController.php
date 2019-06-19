@@ -48,7 +48,7 @@ class AdminCategoriesController extends Controller
         $category = new Category;
         $category->category_name = $request->category_name;
         $category->save();
-        return redirect('/admin/categories');
+        return redirect('/admin/categories')->with('success', 'تم اضافة القسم بنجاح.');
     }
 
     /**
@@ -95,6 +95,6 @@ class AdminCategoriesController extends Controller
     {
         //
         Category::findOrFail($id)->delete();
-        return redirect('/admin/categories');
+        return back();
     }
 }

@@ -12,9 +12,16 @@ class AdminArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('Admin');
+    }
     public function index()
     {
         //
+        $articles = Article::all();
+        return view('admin.articles.index')->with('articles', $articles);
     }
 
     /**
@@ -75,7 +82,7 @@ class AdminArticlesController extends Controller
         $article->is_active == 1 ? $article->is_active = 0 : $article->is_active = 1;
         //Saving and redirecting back
         $article->save();
-        return redirect('/admin');
+        return back();
     }
 
     /**
@@ -88,6 +95,6 @@ class AdminArticlesController extends Controller
     {
         //Delete and redirect to the same page
         Article::findOrFail($id)->delete();
-        return redirect('/admin');
+        return back();
     }
 }

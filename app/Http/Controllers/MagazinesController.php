@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Magazine;
 use App\Channel;
-use App\Http\Requests\MagazineCreateRequest;
 use App\Article;
+use App\Http\Requests\CreateMagazineRequest;
 
 class MagazinesController extends Controller
 {
@@ -47,7 +47,7 @@ class MagazinesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MagazineCreateRequest $request)
+    public function store(CreateMagazineRequest $request)
     {
         //Finding and instantiating needed objects
         $channel = Channel::findOrFail($request->channel_id);

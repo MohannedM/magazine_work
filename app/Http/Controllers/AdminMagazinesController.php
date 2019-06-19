@@ -102,7 +102,7 @@ class AdminMagazinesController extends Controller
         //check activation status and reverse it
         $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
         $magazine->save();
-        return redirect('/admin/magazines');
+        return back();
 
     }
 
@@ -114,27 +114,7 @@ class AdminMagazinesController extends Controller
      */
     public function destroy($id)
     {
-        //Delete and redirect to the same page
-        //Find its magazines 
-        // $magazine = Magazine::findOrFail($id);
-        // //find the magazines' articles
-        //    $articles = $magazine->articles()->get();
-        //    foreach($articles as $article){
-        //        //Find the article comments
-        //        $comments = $article->comments()->get();
-        //        foreach($comments as $comment){
-        //         //finding comments' replies and deleting them
-        //         $comment->replies()->delete();
-        //        }
-        //        //Deleting articles' comments
-        //        $article->comments()->delete();
-        //    }
-        //    //Delete the magazine articles
-        //    $magazine->articles()->delete();
-        //    //Delete the magazine
-        //    $magazine->delete();
-        // return redirect('/admin/channels');
         Magazine::findOrFail($id)->delete();
-        return redirect('/admin/magazines');
+        return back();
     }
 }

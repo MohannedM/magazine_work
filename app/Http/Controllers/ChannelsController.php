@@ -62,7 +62,7 @@ class ChannelsController extends Controller
         auth()->user()->channels()->save($channel);
 
         //redirecting to index
-        return redirect('/channels');
+        return redirect('/channels')->with('success', 'تم اضافة المجالة بنجاح.');;
         
 
 

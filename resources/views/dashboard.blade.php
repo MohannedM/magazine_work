@@ -789,6 +789,17 @@
                                 </div>
                             </aside>
                              <!-- /.flicker widget -->
+                             <aside>
+                                    <h3 class="category-headding ">فئة</h3>
+                                    <div class="headding-border bg-color-2"></div>
+                                    <div class="cats-widget">
+                                        <ul>	
+                                            @foreach ($categories as $category)
+                                            <li class=""><a href="{{route('categories.show', ['category'=>$category->id])}}" title="Title goes here.">{{$category->category_name}}</a> <span>{{count($category->articles)}}</span></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </aside>
                         </div>
                     </div>
                 </div>
