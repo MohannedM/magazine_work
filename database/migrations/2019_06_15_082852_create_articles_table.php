@@ -23,7 +23,6 @@ class CreateArticlesTable extends Migration
             $table->text('article_cover');
             $table->integer('views')->default(0);
             $table->tinyInteger('is_active')->default(0);
-            $table->foreign('magazine_id')->references('id')->on('magazines')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

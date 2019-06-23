@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container" style="min-height: 500px">
-    @include('includes.messages')
     <div class="row mt-5">
         <div class="col-md-6">
             <h1 class="display-4">اضافة صور للمقال<small class="text-muted">(اختياري)</small></h1>

@@ -4,45 +4,39 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-                <div id="logreg-forms">
-                        <form class="form-signin" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                                @csrf
-                            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> تسجيل الدخول</h1>
-                            <input type="email" id="inputEmail" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" autofocus>
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                            <input type="password" id="inputPassword" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="كلمة المرور"  name="password">
-                            @if ($errors->has('password'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('تذكرني') }}
-                                        </label>
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    </div>
-                                </div>
+            <section class="login-reg-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="login-form-inner">
+                                <h3 class="category-headding ">تسجيل الدخول إلى حسابك</h3>
+                                <div class="headding-border bg-color-1"></div>
+                                <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                                    @csrf
+                                    <label>البريد الالكتروني<sup>*</sup></label>
+                                    <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="name_email_2" name="email" placeholder="البريد الالكتروني" value="{{ old('email') }}" required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                    <label>كلمه السر <sup>*</sup></label>
+                                    <input type="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" id="password" name="password" placeholder="*******">
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                    <label class="checkbox-inline"> <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>تذكرنى</label>
+                                    <button type="submit" class="btn btn-style">تسجيل الدخول</button>
+                                    <div class="foeget"><a href="{{ route('password.request') }}">نسيت اسم المستخدم / كلمة السر؟</a></div>
+                                </form>
                             </div>
-                            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> تسجيل</button>
-                            
-
-                            <a href="{{ route('password.request') }}" id="forgot_pswd">نسيت كلمة المرور؟</a>
-                            <hr>
-                            <!-- <p>Don't have an account!</p>  -->
-                            <a href="{{route('register')}}" class="btn btn-primary btn-block text-white" type="button" id="btn-signup"> تسجيل حساب جديد</a>
-                            </form>
-                            <br>
-                            
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
+    </div>
+</div>
 @endsection

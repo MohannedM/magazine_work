@@ -17,7 +17,10 @@ class MagazinesController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth')->except(['index', 'show','show_pdf']);
+        //Only admin users can CRUD channels
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('Admin')->except(['index', 'show']);
 
     }
 
@@ -97,6 +100,10 @@ class MagazinesController extends Controller
     public function edit($id)
     {
         //
+    }
+    public function show_pdf(Request $request){
+        $magazine = Magazine::findOrFail($request->id);
+        return view('pdf.show')->with('magazine', $magazine);
     }
     
 

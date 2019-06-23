@@ -114,7 +114,9 @@ class AdminMagazinesController extends Controller
      */
     public function destroy($id)
     {
-        Magazine::findOrFail($id)->delete();
+        $magazine = Magazine::findOrFail($id);
+        $magazine->articles()->delete();
+        $magazine->delete();
         return back();
     }
 }

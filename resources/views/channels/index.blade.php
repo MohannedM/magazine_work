@@ -11,23 +11,30 @@
             <a href="{{route('channels.create')}}" class="btn btn-secondary btn-sm float-left">اضافة مجلة جديد</a>
         </div>
     </div>
-    <div class="row">
-        @if(count($channels) > 0)
+</div>
+
+ 
+
+
+<div class="container">
+        <div class="row">
+            @if(count($channels) > 0)
             @foreach ($channels as $channel)
-                <div class="col-md-4 my-3">
-                    <div class="card border border-secondary">
-                        <a href="{{route('channels.show', ['id' => $channel->id])}}">
-                        <img src="/images/{{$channel->cover_path}}" alt="" class="img-fluid card-img">
-                        </a>
-                        <div class="card-body">
+                <div id="book1-trigger" class=" col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+                            <a href="{{route('channels.show', ['id' => $channel->id])}}">
+                                    <img src="/images/{{$channel->cover_path}}" alt="" class="img-fluid card-img" style="width:200px; height:250px;">
+                            </a>         
                             <h3 class="card-title">{{$channel->channel_name}}</h3>
-                        </div>
+                            <br><br>
                     </div>
                 </div>
-            @endforeach
-        @endif
-    </div>
-</div>
-<div style="min-height:250px"></div>
-    
+     
+                @endforeach
+                @endif
+            </div>
+            <br>
+        </div>
+        <div style="min-height:250px"></div>
+
 @endsection

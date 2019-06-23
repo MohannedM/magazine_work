@@ -26,8 +26,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-import BootstrapVue from 'bootstrap-vue';
-Vue.use(BootstrapVue);
+
 // const app = new Vue({
 //     el: '#app'
 // });

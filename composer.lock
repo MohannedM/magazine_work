@@ -4,8 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf3c948f982e4ea5ec2fcaef27270719",
+    "content-hash": "cd4aab4dc14d97a17b1d188418590421",
     "packages": [
+        {
+            "name": "ahmedsaoud31/arabic-laravel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ahmedsaoud31/arabic-laravel.git",
+                "reference": "28172dc2327dc2f366f14f98133e4a7f8c3696ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ahmedsaoud31/arabic-laravel/zipball/28172dc2327dc2f366f14f98133e4a7f8c3696ff",
+                "reference": "28172dc2327dc2f366f14f98133e4a7f8c3696ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Arabic": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Arabic Laravel is the addition of Arabic Language",
+            "time": "2018-07-10T14:35:21+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -4543,7 +4573,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ahmedsaoud31/arabic-laravel": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

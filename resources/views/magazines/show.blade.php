@@ -9,7 +9,16 @@
                 </div>
                 <div class="col-md-6 clearfix">
                     <a href="{{route('articles.create', ['magazine_id'=>$magazine->id])}}" class="btn btn-secondary btn-sm mr-2 float-left">اضافة مقالة جديد</a>
-                    <a href="/pdfs/{{$magazine->pdf_path}}" class="btn btn-info btn-sm float-left" target="_blank">قراة الاصدار PDF</a>
+                    {{-- <div class="flip-book-container solid-container" src="/pdfs/maha.pdf"> --}}
+                    {{-- <a href="{{ route('pdf.show', ['id'=> $magazine->id])}}" class="btn btn-info btn-sm float-left" target="_blank">قراة الاصدار PDF</a> --}}
+                    <form action="{{ route('pdf.show')}}" method="POST">
+                        @csrf
+                    <input type="hidden" name="id" value="{{$magazine->id}}">
+                    <input type="submit" value="pdf" class="btn btn-secondary">
+                    </form>
+
+                    {{-- </div> --}}
+                    {{-- <a href="/pdfs/{{$magazine->pdf_path}}" class="btn btn-info btn-sm float-left" target="_blank">قراة الاصدار PDF</a> --}}
                 </div>
         
             </div>
@@ -31,5 +40,11 @@
     </div>
 </div>
 <div style="min-height:250px"></div>
-    
+
+
+
+
+
+
+
 @endsection

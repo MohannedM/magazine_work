@@ -64,10 +64,19 @@ class ArticlesController extends Controller
         // check if the request has a magazine id
         $request->magazine_id ? $article->magazine_id = $request->magazine_id : $article->magazine_id = 0;
         //Check if user is logged in
-        $user = Auth::user();
-        $user ? $article->user_id = $user->id : $article->user_id = 0;
+       
+      
         //If user is admin it will be autmatically active
-        $user->is_admin == 1 ? $article->is_active = 1 : $article->is_active = 0;
+        if(Auth::check())
+           {
+            $user = Auth::user();
+            $article->user_id = $user->id;
+            auth()->user()->is_admin == 1 ? $article->is_active = 1 : $article->is_active = 0;
+            }
+            else
+            {
+                $article->user_id = 0;
+            }
         //Assign the rest of information
         $article->article_title = $request->article_title;
         $article->article_content = $request->article_content;
@@ -91,6 +100,9 @@ class ArticlesController extends Controller
         //
         $article = Article::findOrFail($id);
         $comments = $article->comments()->where('is_active',1)->orderBy('created_at', 'desc')->get();
+        $article->views > 0 ? $article->views++ : $article->views = 1;
+        $article->save();
+        
         if($article->is_active != 1){
             return redirect('/');
         }

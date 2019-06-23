@@ -37,5 +37,7 @@ Route::resource('/articles/{article_id}/comments', 'CommentsController');
 Route::resource('/admin/comments', 'AdminCommentsController', ['as'=>'admin']);
 Route::resource('/comments/{comment_id}/replies', 'RepliesController');
 Route::resource('/admin/replies', 'AdminRepliesController', ['as'=>'admin']);
+Route::post('/pdf', 'MagazinesController@show_pdf')->name('pdf.show');
+Route::get('/contact', 'ContactsController@index')->name('contact');
 
 // Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');

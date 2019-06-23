@@ -15,8 +15,10 @@ class ChannelsController extends Controller
      */
     public function __construct()
     {
-        //Only authenticated users can CRUD channels
+        //Only admin users can CRUD channels
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('Admin')->except(['index', 'show']);
+
     }
 
     public function index()

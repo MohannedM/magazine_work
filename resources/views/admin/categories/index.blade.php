@@ -1,9 +1,8 @@
 @extends('layouts.admin')
-@section('content')
-    
+@section('content') 
 <div class="container">
-    <div class="row mt-5">
         @include('includes.messages')
+    <div class="row mt-5">
         <div class="col-md-8">
                 
                 <div>

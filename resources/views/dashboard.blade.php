@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<?php use Arabic\Arabic; ?>
             @section('content')
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 
@@ -57,20 +57,20 @@
                         <div class="col-sm-3 hidden-xs col-padding">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">
-                                    <a href="#">
-                                        <img class="entry-thumb" src="images/slider/slide-01.jpg" alt="">
+                                    <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[1]->magazine_id, 'article'=>$most_viewed[1]->id])}}">
+                                        <img class="entry-thumb" src="images/{{$most_viewed[1]->article_cover}}" alt="">
                                     </a>
                                 </div>
                                 <div class="post-info">
-                                    <span class="color-1">موضة </span>
-                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة  </a></h3>
+                                    <span class="color-5">{{$most_viewed[1]->category->category_name}} </span>
+                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">{{$most_viewed[1]->article_title}} </a></h3>
                                     <div class="post-editor-date">
                                         <!-- post date -->
                                         <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
+                                            <i class="pe-7s-clock"></i> {{$most_viewed[1]->created_at->day}}/{{$most_viewed[1]->created_at->month}}/{{$most_viewed[1]->created_at->year}}
                                         </div>
                                         <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
+                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count($most_viewed[1]->comments)}} </div>
                                         <!-- read more -->
                                         <a class="readmore pull-left" href="#"><i class="pe-7s-angle-right"></i></a>
                                     </div>
@@ -80,20 +80,20 @@
                         <div class="col-md-6">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">
-                                    <a href="#">
-                                        <img class="entry-thumb" src="images/slider/slide-01.jpg" alt="">
+                                    <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[0]->magazine_id, 'article'=>$most_viewed[0]->id])}}">
+                                        <img class="entry-thumb" src="/images/{{$most_viewed[0]->article_cover}}" alt="">
                                     </a>
                                 </div>
                                 <div class="post-info">
-                                    <span class="color-1">موضة </span>
-                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة  </a></h3>
+                                    <span class="color-1">{{$most_viewed[0]->category->category_name}} </span>
+                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">{{$most_viewed[0]->article_title}}  </a></h3>
                                     <div class="post-editor-date">
                                         <!-- post date -->
                                         <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
+                                            <i class="pe-7s-clock"></i>  {{$most_viewed[0]->created_at->day}}/{{$most_viewed[0]->created_at->month}}/{{$most_viewed[0]->created_at->year}}
                                         </div>
                                         <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
+                                        <div class="post-author-comment"><i class="pe-7s-comment"></i>  {{count($most_viewed[0]->comments)}} </div>
                                         <!-- read more -->
                                         <a class="readmore pull-left" href="#"><i class="pe-7s-angle-right"></i></a>
                                     </div>
@@ -103,20 +103,20 @@
                         <div class="col-sm-3 hidden-xs col-padding">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">
-                                    <a href="#">
-                                        <img class="entry-thumb" src="images/slider/slide-05.jpg" alt="">
+                                    <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[2]->magazine_id, 'article'=>$most_viewed[2]->id])}}">
+                                        <img class="entry-thumb" src="images/{{$most_viewed[2]->article_cover}}" alt="">
                                     </a>
                                 </div>
                                 <div class="post-info">
-                                    <span class="color-5">موضة </span>
-                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة </a></h3>
+                                    <span class="color-5">{{$most_viewed[2]->category->category_name}} </span>
+                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">{{$most_viewed[2]->article_title}} </a></h3>
                                     <div class="post-editor-date">
                                         <!-- post date -->
                                         <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
+                                            <i class="pe-7s-clock"></i> {{$most_viewed[2]->created_at->day}}/{{$most_viewed[2]->created_at->month}}/{{$most_viewed[2]->created_at->year}}
                                         </div>
                                         <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
+                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count($most_viewed[2]->comments)}} </div>
                                         <!-- read more -->
                                         <a class="readmore pull-left" href="#"><i class="pe-7s-angle-right"></i></a>
                                     </div>
@@ -134,152 +134,32 @@
                             <div class="headding-border"></div>
                             <div class="row">
                                 <div id="content-slide" class="owlousel">
+                                    @if (count($firstArticles) > 0)
+                                    @foreach ($firstArticles as $article)
+                                        
                                     <!-- item-1 -->
                                     <div class="item">
                                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                            <h3><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني </a></h3>
+                                            <h3><a href="#">{{$article['article_title']}} </a></h3>
                                             <div class="post-thumb">
-                                                <a href="#">
-                                                    <img class="img-responsive" src="images/recent_news_01.jpg" alt="">
+                                                <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                    <img class="img-responsive" src="/images/{{$article['article_cover']}}" alt="">
                                                 </a>
-                                            </div>
-                                            <div class="post-info meta-info-rn">
-                                                <div class="slide">
-                                                    <a target="_blank" href="#" class="post-badge btn_six">T</a>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="post-title-author-details">
                                             <div class="post-editor-date">
                                                 <div class="post-date">
-                                                    <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
+                                                    <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
                                                 </div>
-                                                <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
+                                                <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
                                             </div>
-                                            <p>هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، <a href="#">...اقرأ أكثر</a></p>
+                                            <p> {{substr($article['article_content'], 0, 200)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
                                         </div>
                                     </div>
-                                    <!-- item-2 -->
-                                    <div class="item">
-                                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s"><!-- image -->
-                                            <h3><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني </a></h3>
-                                            <div class="post-thumb">
-                                                <a href="#">
-                                                    <img class="img-responsive" src="images/recent_news_02.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-info meta-info-rn">
-                                                <div class="slide">
-                                                    <a target="_blank" href="#" class="post-badge btn_sev">I</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-title-author-details">
-                                            <div class="post-editor-date">
-                                                <div class="post-date">
-                                                    <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                </div>
-                                                <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                            </div>
-                                            <p>خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني الكلاسيكي منذ العام 45 قبل الميلاد، مما يجعله أكثر من 2000 عام في القدم. قام البروفيسور <a href="#">...اقرأ أكثر</a></p>
-                                        </div>
-                                    </div>
-                                    <!-- item-3 -->
-                                    <div class="item">
-                                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s"><!-- image -->
-                                            <h3><a href="#">لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس </a></h3>
-                                            <div class="post-thumb">
-                                                <a href="#">
-                                                    <img class="img-responsive" src="images/recent_news_03.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-info meta-info-rn">
-                                                <div class="slide">
-                                                    <a target="_blank" href="#" class="post-badge btn_five">B</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="post-title-author-details">
-                                            <div class="post-editor-date">
-                                                <div class="post-date">
-                                                    <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                </div>
-                                                <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                            </div>
-                                            <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام <a href="#">...اقرأ أكثر</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row rn_block">
-                                <div class="col-md-4 col-sm-6 padd">
-                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                        <div class="post-thumb">
-                                            <a href="#">
-                                                <img class="img-responsive" src="images/recent_news_04.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-info meta-info-rn">
-                                            <div class="slide">
-                                                <a target="_blank" href="#" class="post-badge btn_eight">H</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-title-author-details">
-                                        <h4><a href="#">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي ...</a></h4>
-                                        <div class="post-editor-date">
-                                            <div class="post-date">
-                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                            </div>
-                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 padd">
-                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s"><!-- image -->
-                                        <div class="post-thumb">
-                                            <a href="#">
-                                                <img class="img-responsive" src="images/recent_news_05.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-info meta-info-rn">
-                                            <div class="slide">
-                                                <a target="_blank" href="#" class="post-badge btn_nine">p</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-title-author-details">
-                                        <h4><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور ...</a></h4>
-                                        <div class="post-editor-date">
-                                            <div class="post-date">
-                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                            </div>
-                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 hidden-sm padd">
-                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s"><!-- image -->
-                                        <div class="post-thumb">
-                                            <a href="#">
-                                                <img class="img-responsive" src="images/recent_news_06.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="post-info meta-info-rn">
-                                            <div class="slide">
-                                                <a target="_blank" href="#" class="post-badge btn_one">F</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="post-title-author-details">
-                                        <h4><a href="#">هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم  ...</a></h4>
-                                        <div class="post-editor-date">
-                                            <div class="post-date">
-                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                            </div>
-                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    @endif
+                                        
                                 </div>
                             </div>
                         </section>
@@ -305,171 +185,39 @@
             ============================================ -->
             <section class="all-category-inner">
                 <div class="container">
+                    <h3>احدث المجلات</h3>
+                        <div class="headding-border bg-color-1"></div>
                     <div class="row">
-                        <div class="col-md-4 col-sm-4">  <!-- sports -->
-                            <div class="sports-inner">
-                                <h3 class="category-headding ">رياضات</h3>
-                                <div class="headding-border bg-color-1"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/sports.jpg" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
+                        @if (count($latest_channels) > 0)
+                            @foreach ($latest_channels as $channel)
+                                
+                            
+                            <div class="col-md-4 col-sm-4">
+                                  <!-- sports -->
+                                <div class="sports-inner">
+                                    <h3 class="category-headding ">{{$channel['channel_name']}}</h3>
+                                    
+                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                        <!-- post image -->
+                                        <div class="post-thumb">
+                                            <a href="{{route('channels.show', ['channel'=> $channel['id']])}}">
+                                                <img src="/images/{{$channel['cover_path']}}" height="250" class="img-responsive" alt="">
+                                            </a>
                                         </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
                                     </div>
-                                    <p>للمهتمين قمنا بوضع نص لوريم إبسوم القياسي والمُستخدم منذ القرن الخامس عشر في الأسفل. وتم أيضاً توفير الأقسام 1.10.32 و 1.10.33 من "حول أقاصي الخير والشر"<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.sports -->
-                        <div class="col-md-4 col-sm-4">  <!-- fashion -->
-                            <div class="fashion-inner">
-                                <h3 class="category-headding ">موضة</h3>
-                                <div class="headding-border bg-color-4"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/fashion.jpg" class="img-responsive" alt="">
-                                        </a>
+                                    <div class="post-title-author-details">
+                                        <div class="post-editor-date">
+                                            <!-- post date -->
+                                            <div class="post-date">
+                                                <i class="pe-7s-clock"></i>  {{Arabic::since($channel['created_at'])}}
+                                            </div>
+                                            </div>
                                     </div>
                                 </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                    </div>
-                                    <p>البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.fashion -->
-                        <div class="col-md-4 col-sm-4">  <!-- travel -->
-                            <div class="travel-inner">
-                                <h3 class="category-headding ">سفر</h3>
-                                <div class="headding-border bg-color-3"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/travel.jpg" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                    </div>
-                                    <p>هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.travel -->
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4">  <!-- food -->
-                            <div class="food-inner">
-                                <h3 class="category-headding ">الأطعمة</h3>
-                                <div class="headding-border bg-color-4"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">بينما تعمل جميع مولّدات نصوص لوريم إيبسوم على الإنترنت على إعادة تكرار مقاطع من نص </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/food.jpg" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦ 
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                    </div>
-                                    <p>هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص.<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.food -->		
-                        <div class="col-md-4 col-sm-4">  <!-- politics -->
-                            <div class="politics-inner">
-                                <h3 class="category-headding ">سياسة</h3>
-                                <div class="headding-border bg-color-5"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">الكلاسيكي منذ العام 45 قبل الميلاد، مما يجعله أكثر من 2000 عام في القدم. قام البروفيسور </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/politics_06.jpg" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                    </div>
-                                    <p>لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.politics -->		
-                        <div class="col-md-4 col-sm-4">  <!-- health -->
-                            <div class="health-inner">
-                                <h3 class="category-headding ">الصحة</h3>
-                                <div class="headding-border bg-color-3"></div>
-                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
-                                    <!-- post title -->
-                                    <h3><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل إن له جذور في الأدب اللاتيني </a></h3>
-                                    <!-- post image -->
-                                    <div class="post-thumb">
-                                        <a href="#">
-                                            <img src="images/health.jpg" class="img-responsive" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-title-author-details">
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                    </div>
-                                    <p>للمهتمين قمنا بوضع نص لوريم إبسوم القياسي والمُستخدم منذ القرن الخامس عشر في الأسفل. وتم أيضاً توفير الأقسام 1.10.32 و 1.10.33 من "حول أقاصي الخير والشر<a href="#">...اقرأ أكثر</a></p>
-                                </div>
-                            </div>
-                        </div>  <!-- /.health -->
+                            </div>  <!-- /.sports -->
+                            @endforeach
+                            @endif
+
                     </div>
                 </div>
             </section>
@@ -481,297 +229,51 @@
                         <div class="col-sm-8">  <!-- article -->	 				
                             
                             <section class="articale-inner">
-                                <h3 class="category-headding ">مقالة</h3>
-                                <div class="headding-border"></div>
+
                                 <div class="row">
 
                                     <div id="content-slide-5" class="owlsel">
                                         <!-- item-1 -->
                                         <div class="item">
                                             <div class="row rn_block">
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_five">B</a>
+                                                    @foreach ($categories as $category)
+                                                    @if (count($category->articles) > 0)
+                                                        
+                                                    
+                                                    <div class="col-xs-6 col-md-4 col-sm-4">  <!-- sports -->
+                                                        <div class="sports-inner">
+                                                            <h3 class="category-headding ">{{$category->category_name}}</h3>
+                                                            <div class="headding-border bg-color-1"></div>
+                                                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
+                                                                <!-- post title -->
+                                                                <?php $article = $category->articles()->orderBy('created_at','desc')->first();?>
+                                                                <h3><a href="{{route('articles.show', ['magazine_id'=> $article['magazine_id'], 'article'=>$article['id']])}}">{{$article['article_title']}} </a></h3>
+                                                                <!-- post image -->
+                                                                <div class="post-thumb">
+                                                                    <a href="{{route('articles.show', ['magazine_id'=> $article['magazine_id'], 'article'=>$article['id']])}}">
+                                                                        <img src="/images/{{$article->article_cover}}" class="img-responsive" alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="post-title-author-details">
+                                                                <div class="post-editor-date">
+                                                                    <!-- post date -->
+                                                                    <div class="post-date">
+                                                                        <i class="pe-7s-clock"></i>  {{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}
+                                                                    </div>
+                                                                    <!-- post comment -->
+                                                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count($article->comments)}} </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم  ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale02.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_three">S</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale03.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_one">F</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale04.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_eight">H</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">للمهتمين قمنا بوضع نص لوريم إبسوم القياسي والمُستخدم منذ القرن ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale05.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_four">L</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">إيبسوم ذو شكل منطقي قريب إلى النص الحقيقي. وبالتالي يكون النص ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale06.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_two">T</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">دخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    </div>  <!-- /.sports -->
+                                                    @endif
+                                                    @endforeach
+ 
+    
                                             </div>
                                         </div>
                                         <!-- item-2 -->
-                                        <div class="item">
-                                            <div class="row rn_block">
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_five">B</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم  ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale02.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_three">S</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale03.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_one">F</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">خلافاَ للإعتقاد السائد فإن لوريم إيبسوم ليس نصاَ عشوائياً، بل ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale04.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_eight">H</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">للمهتمين قمنا بوضع نص لوريم إبسوم القياسي والمُستخدم منذ القرن ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale05.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_four">L</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">إيبسوم ذو شكل منطقي قريب إلى النص الحقيقي. وبالتالي يكون النص ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-md-4 col-sm-4 padd">
-                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s"><!-- image -->
-                                                        <div class="post-thumb">
-                                                            <a href="#">
-                                                                <img class="img-responsive" src="images/articale06.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="post-info meta-info-rn">
-                                                            <div class="slide">
-                                                                <a target="_blank" href="#" class="post-badge btn_two">T</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-title-author-details">
-                                                        <h4><a href="#">دخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن ...</a></h4>
-                                                        <div class="post-editor-date">
-                                                            <div class="post-date">
-                                                                <i class="pe-7s-clock"></i> ديسمبر ٢٠ ، ٢٠١٦
-                                                            </div>
-                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> ١٣ </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>  
                                 </div>
                             </section>

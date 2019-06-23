@@ -5,15 +5,20 @@
 <div class="container py-4">
     <div class="row">
         <div class="col">
-            <h1 class="display-4">{{$article->article_title}}</h1>
-            <div>
-                <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid w-50">
-            </div>
-            <span class="badge badge-secondary">{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</span><br>
-            <p class="lead">{{$article->article_content}}</p>
-            <span class="badge badge-success"> الكاتب {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}}</span><br>
+        <h1 class="display-4">{{$article->article_title}}</h1>
+        <span class="badge badge-danger mb-3"> الكاتب {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}} {{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</span><br>
+            <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid text-center article-img">
+            @if (count($article->photos) > 0)
+                <div class="row mt-3">
+                    @foreach ($article->photos as $photo)
+                        <div class="col-lg-1 col-md-2 col-sm-3"><img height="75" width="75" src="/images/{{$photo->path}}" class="my-2" alt=""></div>
+                    @endforeach
+                </div>
+            @endif
+            <p class="lead my-3">{{$article->article_content}}</p>
         </div>
     </div>
+
 
 
     {{-- ADD Comment Section --}}
