@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Magazine;
 use App\Sponsor;
+use App\Channel;
+use App\Http\Requests\CreateMagazineRequest;
 
 class AdminMagazinesController extends Controller
 {
@@ -33,6 +35,8 @@ class AdminMagazinesController extends Controller
     public function create()
     {
         //
+        $channels = Channel::where('is_active', 1)->orderBy('created_at', 'desc')->get();
+        return view('admin.magazines.create', compact('channels'));
     }
 
     /**
@@ -41,9 +45,33 @@ class AdminMagazinesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMagazineRequest $request)
     {
         //
+        $channel = Channel::findOrFail($request->channel_id);
+        $magazine = new Magazine;
+
+        $magazine->magazine_name = $request->magazine_name;
+        $magazine->is_active = 1;
+
+        //Asigning the uploaded file to variables
+        $photo = $request->cover_path;
+        $pdf = $request->pdf_path;
+        //Asigining the image a new name
+        $cover_name = time() . $photo->getClientOriginalName();
+        $pdf_name = time() . $pdf->getClientOriginalName();
+        //Moving image to images folder
+        $photo->move('images', $cover_name);
+        $pdf->move('pdfs', $pdf_name);
+        //Saving file name to the database
+        $magazine->cover_path = $cover_name;
+        $magazine->pdf_path = $pdf_name;
+
+        //Creating the new magazine by its channel
+        $channel->magazines()->save($magazine);
+        //redirecting with a temp success session
+        return redirect('/admin/magazines')->with('success', 'تم اضافة الإصدار بنجاح');
+
     }
 
     /**

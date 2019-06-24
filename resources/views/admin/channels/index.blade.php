@@ -7,6 +7,9 @@
             <div>
                 <h1 class="display-4 mb-3">المجالات</h1>
             </div>
+            <div class=" mr-auto">
+                <a href="{{route('admin.channels.create')}}" class="btn btn-primary btn-sm">اضفة مجالة</a>
+            </div>
             @if(count($channels)>0)
             <table class="table table-striped"">
                 <thead>

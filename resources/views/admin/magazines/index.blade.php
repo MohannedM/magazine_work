@@ -7,6 +7,10 @@
             <div>
                 <h1 class="display-4 mb-3">جميع الاصدرات</h1>
             </div>
+        </div>
+        <div class=" mr-auto">
+            <a href="{{route('admin.magazines.create')}}" class="btn btn-primary btn-sm">اضفة اصدار</a>
+        </div>
             @if(count($magazines)>0)
             <table class="table table-striped"">
                 <thead>

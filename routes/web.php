@@ -24,6 +24,7 @@ Route::resource('/admin/magazines', 'AdminMagazinesController', ['as'=>'admin'])
 Route::resource('/magazines/{magazine_id}/articles', 'ArticlesController');
 Route::get('/articles/create', 'ArticlesController@createArticle')->name('create_article');
 Route::resource('/admin/articles', 'AdminArticlesController', ['as'=>'admin']);
+Route::put('/admin/articles/{article}/activation', 'AdminArticlesController@activation')->name('admin.articles.activation');
 Route::resource('/admin/categories', 'AdminCategoriesController', ['as'=>'admin']);
 Route::resource('/admin/users', 'AdminUsersController', ['as'=>'admin']);
 Route::get('/categories/{category}', 'CategoriesController@show')->name('categories.show');
@@ -39,5 +40,6 @@ Route::resource('/comments/{comment_id}/replies', 'RepliesController');
 Route::resource('/admin/replies', 'AdminRepliesController', ['as'=>'admin']);
 Route::post('/pdf', 'MagazinesController@show_pdf')->name('pdf.show');
 Route::get('/contact', 'ContactsController@index')->name('contact');
+Route::get('/archives/{year}/{month}', 'ArticlesController@show_archives')->name('archives.show');
 
 // Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');

@@ -94,6 +94,7 @@
     </header>
     
     <div class="py-5 clearfix">
+        @include('includes.messages')
         @yield('content')
     </div>
 

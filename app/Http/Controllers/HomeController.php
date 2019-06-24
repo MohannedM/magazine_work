@@ -26,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Get archieves
+        $articles=new Article;
+        $archives= $articles::selectRaw('year(created_at) year , monthname(created_at) month ,count(*) published')->groupBy('year','month')->orderByRaw('min(created_at) desc')->get()->toArray();
         $categories = Category::all();
         // Get Most Viewed Articles in the past week and if they are less than 3 get the most viewed article in past month
         $most_viewed = Article::where('created_at','>', date('Y-m-d',time() - 60*60*24*7))->orderBy('views', 'desc')->get();
@@ -43,6 +46,6 @@ class HomeController extends Controller
         $channels = $channels->toArray();
         $latest_channels = array_slice($channels, 0, 3, true);
 
-        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles', 'latest_channels'));
+        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles', 'latest_channels', 'archives'));
     }
 }

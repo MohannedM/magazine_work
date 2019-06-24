@@ -46,7 +46,7 @@
                       
                   </td>
                   <td>     
-                      <form action="{{'admin.articles.delete', ['article'=>$article->id]}}" method="POST">
+                      <form action="{{route('admin.articles.destroy', ['article'=>$article->id])}}" method="POST">
                           {{csrf_field()}}
                           <input type="hidden" name="_method" value="DELETE">
                           <button type="submit" class="btn btn-danger">

@@ -77,6 +77,9 @@ class ArticlesController extends Controller
             {
                 $article->user_id = 0;
             }
+        if($request->magazine_id == 0){
+            $article->is_active = 0;
+        }
         //Assign the rest of information
         $article->article_title = $request->article_title;
         $article->article_content = $request->article_content;
@@ -108,6 +111,21 @@ class ArticlesController extends Controller
         }
         return view('articles.show', compact('article', 'comments'));
     }
+
+    public function show_archives($year, $month)
+    {
+       
+        $archives = Article::whereYear('created_at', '=', $year)
+              ->whereMonth('created_at', '=', $month)
+              ->get();
+
+
+            
+        return view('archives.index',compact('archives'));
+
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.

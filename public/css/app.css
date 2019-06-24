@@ -31641,10 +31641,8 @@ html {
 }
 
 .article-img {
-  -webkit-box-shadow: 2px 2px 5px #444;
-          box-shadow: 2px 2px 5px #444;
   height: 550px;
-  min-width: 100%;
+  min-width: 90%;
 }
 
 .navbar-laravel {
