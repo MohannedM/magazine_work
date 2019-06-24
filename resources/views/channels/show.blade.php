@@ -12,8 +12,11 @@
                 <div class="headding-border"></div>
             </div>
             <div class="col-md-6 clearfix">
-                <a href="{{route('magazines.create', ['channel_id' => $channel_id])}}" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
-            </div>
+                    @if(Auth::check())
+                        @if (Auth::user()->is_admin == 1)
+                        <a href="{{route('magazines.create', ['channel_id' => $channel_id])}}" class="btn btn-secondary btn-sm float-left">اضافة اصدار جديد</a>
+                        @endif
+                    @endif
     
         </div>
         <div class="row">

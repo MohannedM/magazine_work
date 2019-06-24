@@ -2,7 +2,7 @@
 <?php use Arabic\Arabic; ?>
             @section('content')
             <div class="se-pre-con" style="display: none;"></div>
-     
+            @if(count($most_viewed)>=3)
             <section class="news-feed">
                 <div class="container">
                     <div class="row row-margin">
@@ -77,7 +77,8 @@
                         </div>
                     </div>
                 </div>
-            </section>	
+            </section>
+            @endif	
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12"> <!-- right content inner -->

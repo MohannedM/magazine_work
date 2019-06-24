@@ -18,7 +18,11 @@
 
                         </div>
                         <div class="col-md-6 clearfix">
-                                <a href="{{route('channels.create')}}" class="btn btn-secondary btn-sm float-left">اضافة مجلة جديد</a>
+                            @if(Auth::check())
+                                @if (Auth::user()->is_admin == 1)
+                                    <a href="{{route('channels.create')}}" class="btn btn-secondary btn-sm float-left">اضافة مجلة جديد</a>
+                                @endif
+                            @endif
                             </div>
                 </div>
                 <div class="row">

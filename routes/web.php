@@ -19,6 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/channels', 'ChannelsController');
 Route::resource('/admin/channels', 'AdminChannelsController', ['as'=>'admin']);
+Route::put('/admin/channels/{id}/activation', 'AdminChannelsController@activation')->name('admin.channels.activation');
 Route::resource('/channels/{channel_id}/magazines', 'MagazinesController');
 Route::resource('/admin/magazines', 'AdminMagazinesController', ['as'=>'admin']);
 Route::resource('/magazines/{magazine_id}/articles', 'ArticlesController');

@@ -55,7 +55,7 @@
                                   
                                         <ul class="navbar-nav mr-auto">
                                             <li class="active"><a href="/" class="category01">الصفحة الرئيسية</a></li>
-                                            <li><a href="{{ route('channels.index')}}" class="category02">الإصدارات </a></li>
+                                            <li><a href="{{ route('channels.index')}}" class="category02">المجلات</a></li>
                                             <li><a href="/authors" class="category03">الكتاب </a></li>
                                             <li> <a href="/contact" class="category04">تواصل معنا </a>  </li>
                                             <li><a href="{{route('create_article')}}" class="category05">اضافة مقالة</a></li>

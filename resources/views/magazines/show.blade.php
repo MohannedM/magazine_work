@@ -8,7 +8,9 @@
                 <h1 class="category-headding ">جميع مقلات المجلة</h1>
                 <div class="headding-border"></div>
                 <div class="row">
-                    <a href="{{route('articles.create', ['magazine_id'=>$magazine->id])}}" class="btn btn-secondary btn-sm mr-auto">اضافة مقالة</a>
+                    @if(Auth::check())
+                        <a href="{{route('articles.create', ['magazine_id'=>$magazine->id])}}" class="btn btn-secondary btn-sm mr-auto">اضافة مقالة</a>
+                    @endif
 
                     <div id="content-slide" class="owlousel">
                         @if (count($articles) > 0)

@@ -88,6 +88,24 @@ class AdminChannelsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //
+        $channel = Channel::findOrFail($id);
+        if($request->has('cover_path')){
+            //Asigning the uploaded image to a variable
+            $file = $request->cover_path;
+            //Asigining the image a new name
+            $cover_name = time() . $file->getClientOriginalName();
+            //Moving image to images folder and saving in database
+            $file->move('images', $cover_name);
+            $channel->cover_path = $cover_name;
+        }
+        $channel->channel_name = $request->channel_name;
+        $channel->save();
+        return redirect('/admin/channels')->with('success', 'تم تعديل المجلة بنجاح');
+
+    }
+
+    public function activation(Request $request, $id){
         $channel = Channel::findOrFail($id);
         //Check its status and reverse it
         $channel->is_active == 0 ? $channel->is_active = 1 : $channel->is_active = 0;
