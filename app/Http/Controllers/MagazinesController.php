@@ -17,10 +17,8 @@ class MagazinesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show','show_pdf']);
-        //Only admin users can CRUD channels
-        $this->middleware('auth')->except(['index', 'show']);
-        $this->middleware('Admin')->except(['index', 'show']);
+           $this->middleware('auth')->except(['index', 'show','show_pdf']);
+           $this->middleware('Admin')->except(['index', 'show','show_pdf']);
 
     }
 

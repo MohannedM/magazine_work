@@ -5,7 +5,7 @@
 <div class="py-5 container">
         <div class="row">
                 <div class="col-md-6">
-                    <h1 class="mb-3 display-4">جميع المقلات</h1>
+                    <h1 class="mb-3 display-4">جميع المقالات</h1>
                 </div>
                 <div class="col-md-6 clearfix">
                     <a href="{{route('create_article')}}" class="btn btn-secondary btn-sm float-left">اضافة مقالة جديد</a>

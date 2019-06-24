@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
     {
         //
         DB::table('categories')->insert([
-            'category_name'=>str_random(10)
+            'category_name'=>'الفئة التجربية'
         ]);
     }
 }
