@@ -31,8 +31,34 @@
                         </div>
                         <div class="col-md-6">
                             
-
-                            <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @if (count($most_popular) > 0)
+                                            @foreach ($most_popular as $index => $item)
+                                            @if($index == 1)
+                                            <?php $article = App\Article::findOrFail($item['id']);  ?> 
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" style="height: 400px;" src="/images/{{$article->article_cover}}" alt="First slide">
+                                            </div>
+                                            @else
+                                            <?php $article = App\Article::findOrFail($item['id']);  ?> 
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" style="height: 400px;" src="/images/{{$article->article_cover}}" alt="Second slide">
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                            {{-- <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">
                                     <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[0]->magazine_id, 'article'=>$most_viewed[0]->id])}}">
                                         <img class="entry-thumb" src="/images/{{$most_viewed[0]->article_cover}}" alt="">
@@ -52,7 +78,7 @@
                                         <a class="readmore pull-left" href="#"><i class="pe-7s-angle-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         </div>
