@@ -5,7 +5,7 @@
 <div class="py-5 container">
 
             <section class="recent_news_inner">
-                <h1 class="category-headding ">جميع مقلات المجلة</h1>
+                <h1 class="category-headding ">جميع مقلات الاصدار</h1>
                 <div class="headding-border"></div>
                 <div class="row">
                     @if(Auth::check())

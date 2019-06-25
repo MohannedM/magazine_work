@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Article;
 use App\Channel;
+use App\Sponsor;
+use App\Magazine;
 
 class HomeController extends Controller
 {
@@ -35,17 +37,21 @@ class HomeController extends Controller
         if(count($most_viewed) < 3){
             $most_viewed = Article::where('created_at','>', date('Y-m-d',time() - 60*60*24*30))->orderBy('views', 'desc')->get();
         }
+        //Get sponsors
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+
 
         // Get latest 5 articles
         $articles = Article::where('is_active', 1)->orderBy('created_at', 'desc')->get();
         $articles = $articles->toArray();
-        $firstArticles = array_slice($articles, 0, 5, true);
+        $firstArticles = array_slice($articles, 0, 2, true);
+        $secondArticles = array_slice($articles, 2, 3, true);
 
         //Get latest 3 created channels 
-        $channels = Channel::where('is_active', 1)->orderBy('created_at', 'desc')->get();
-        $channels = $channels->toArray();
-        $latest_channels = array_slice($channels, 0, 3, true);
+        $magazines = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->get();
+        $magazines = $magazines->toArray();
+        $latest_magazines = array_slice($magazines, 0, 3, true);
 
-        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles', 'latest_channels', 'archives'));
+        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles','secondArticles', 'latest_magazines', 'archives', 'sponsors'));
     }
 }

@@ -22,7 +22,7 @@ class AdminChannelsController extends Controller
     {
         //
         $channels = Channel::all();
-        return view('admin.channels.index')->with('channels', $channels);
+        // return view('admin.channels.index')->with('channels', $channels);
     }
 
     /**
@@ -33,7 +33,7 @@ class AdminChannelsController extends Controller
     public function create()
     {
         //
-        return view('admin.channels.create');
+        // return view('admin.channels.create');
     }
 
     /**

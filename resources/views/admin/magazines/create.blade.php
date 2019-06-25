@@ -13,15 +13,6 @@
                 <span class="invalid-feedback">عنوان الاصدار مطلوب</span>
             </div>
             <div class="form-group">
-                <label for="channel_id">مجلة الاصدار</label>
-                <select name="channel_id"  class="form-control {{ $errors->has('magazine_name') ? 'is-invalid' : ''}}">
-                    @foreach ($channels as $channel)
-                        <option value="{{$channel->id}}">{{$channel->channel_name}}</option>                            
-                    @endforeach
-                </select>
-                <span class="invalid-feedback"> مجلة الاصدار مطلوبة</span>
-            </div>
-            <div class="form-group">
                 <label for="path">PDF الاصدار</label>
                 <div class="custom-file">
                     <input type="file" name="pdf_path" class="custom-file-input  {{ $errors->has('pdf_path') ? 'is-invalid' : ''}}">

@@ -23,10 +23,10 @@ class MagazinesController extends Controller
     }
 
 
-    public function index($channel_id)
+    public function index()
     {
         $magazines = Magazine::all();
-        return view('magazines.index', compact('magazines', 'channel_id'));
+        return view('magazines.index', compact('magazines'));
     }
 
     /**
@@ -34,12 +34,9 @@ class MagazinesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($channel_id)
+    public function create()
     {
-        if($channel_id){
-            return view('magazines.create')->with('channel_id', $channel_id);        
-        }
-        return redirect('/channels');
+        return view('magazines.create');        
     }
 
     /**
@@ -51,7 +48,6 @@ class MagazinesController extends Controller
     public function store(CreateMagazineRequest $request)
     {
         //Finding and instantiating needed objects
-        $channel = Channel::findOrFail($request->channel_id);
         $magazine = new Magazine;
         $magazine->magazine_name = $request->magazine_name;
 
@@ -63,16 +59,17 @@ class MagazinesController extends Controller
          $pdf_name = time() . $pdf->getClientOriginalName();
          //Moving image to images folder
          $photo->move('images', $cover_name);
-         $pdf->move('pdfs', $pdf_name);
+         $pdf->move('images/pdfs', $pdf_name);
          //Saving file name to the database
          $magazine->cover_path = $cover_name;
          $magazine->pdf_path = $pdf_name;
          //If the user was an admin the magazine will be autmatically active
         auth()->user()->is_admin == 1 ? $magazine->is_active = 1 : $magazine->is_active = 0;
-         //Creating the new magazine by its channel
-         $channel->magazines()->save($magazine);
+         //Creating the new magazine 
+         $magazine->channel_id = 1;
+         $magazine->save();
         //redirecting with a temp success session
-        return redirect('/channels/'.$request->channel_id)->with('success', 'تم اضافة الإصدار بنجاح');
+        return redirect('/magazines')->with('success', 'تم اضافة الإصدار بنجاح');
          
     }
 
@@ -82,7 +79,7 @@ class MagazinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($channel_id,$id)
+    public function show($id)
     {
         //
         $magazine = Magazine::findOrFail($id);
@@ -102,6 +99,12 @@ class MagazinesController extends Controller
     public function show_pdf(Request $request){
         $magazine = Magazine::findOrFail($request->id);
         return view('pdf.show')->with('magazine', $magazine);
+    }
+
+    public function latest_pdf(){
+        //Get the latest magazine
+        $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
+        return view('pdf.latest')->with('magazine', $magazine);
     }
     
 

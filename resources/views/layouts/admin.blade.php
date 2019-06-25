@@ -32,9 +32,9 @@
             <li class="nav-item px-2 {{ Request::is('admin') ? 'active' : '' }}">
                 <a href="{{route('admin')}}" class="nav-link">الصفحة الرئيسية</a>
             </li>
-            <li class="nav-item px-2 {{ Request::is('admin/channels') ? 'active' : '' }}">
+            {{-- <li class="nav-item px-2 {{ Request::is('admin/channels') ? 'active' : '' }}">
                 <a href="{{route('admin.channels.index')}}" class="nav-link">المجلات</a>
-            </li>
+            </li> --}}
             <li class="nav-item px-2 {{ Request::is('admin/magazines') ? 'active' : '' }}">
                 <a href="{{route('admin.magazines.index')}}" class="nav-link">الإصدرات</a>
             </li>

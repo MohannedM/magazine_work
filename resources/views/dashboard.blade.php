@@ -79,50 +79,108 @@
                 </div>
             </section>
             @endif	
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12"> <!-- right content inner -->
-                        <section class="recent_news_inner">
-                            <h3 class="category-headding ">أخبار حديثة</h3>
+
+            <section class="recent_news_inner d-none d-md-block my-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12"> <!-- right content inner -->
+                            @include('pdf.latest');
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recent_news_inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12"> <!-- right content inner -->
+                            <h2 class="category-headding ">أخبار حديثة</h2>
                             <div class="headding-border"></div>
                             <div class="row">
                                 <div id="content-slide" class="owlousel">
                                     @if (count($firstArticles) > 0)
                                     @foreach ($firstArticles as $article)
-                                        
-                                    <div class="item">
-                                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                            <h3><a href="#">{{$article['article_title']}} </a></h3>
-                                            <div class="post-thumb">
-                                                <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
-                                                    <img class="img-responsive" src="/images/{{$article['article_cover']}}" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="post-title-author-details">
-                                            <div class="post-editor-date">
-                                                <div class="post-date">
-                                                    <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
+                                        <div class="col-md-6">
+                                            <div class="item">
+                                                <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
+                                                    <h3><a href="#">{{$article['article_title']}} </a></h3>
+                                                    <div class="post-thumb">
+                                                        <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                            <img class="img-responsive" src="/images/{{$article['article_cover']}}" alt="">
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                                <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
+                                                <div class="post-title-author-details">
+                                                    <div class="post-editor-date">
+                                                        <div class="post-date">
+                                                            <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
+                                                        </div>
+                                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
+                                                    </div>
+                                                    <p> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
+                                                </div>
                                             </div>
-                                            <p> {{substr($article['article_content'], 0, 200)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
                                         </div>
-                                    </div>
                                     @endforeach
                                     @endif
                                         
                                 </div>
                             </div>
-                        </section>
-                        <!-- Politics Area
-                        ============================================ -->
-                         <!-- /.Politics -->
-                        
-                    </div> <!-- /.left content inner -->
-                     <!-- side content end -->
-                </div> <!-- row end -->
-            </div> <!-- container end -->
+                            <div class="row my-3">
+                                    <div id="content-slide" class="owlousel">
+                                        @if (count($secondArticles) > 0)
+                                        @foreach ($secondArticles as $article)
+                                            <div class="col-md-4">
+                                                <div class="item">
+                                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
+                                                        <h3><a href="#">{{$article['article_title']}} </a></h3>
+                                                        <div class="post-thumb">
+                                                            <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                                <img class="img-responsive" src="/images/{{$article['article_cover']}}" alt="">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                        <div class="post-editor-date">
+                                                            <div class="post-date">
+                                                                <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
+                                                            </div>
+                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
+                                                        </div>
+                                                        <p> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        @endif
+                                            
+                                    </div>
+                                </div>
+                            <!-- Politics Area
+                                ============================================ -->
+                                <!-- /.Politics -->
+                                
+                            </div> <!-- /.left content inner -->
+                            <div class="col-md-4 d-none d-md-block">
+                                    <h2 class="category-headding ">الرعاة</h2>
+                                    <div class="headding-border"></div>
+                                @if (count($sponsors) > 0)
+                                @foreach ($sponsors as $sponsor)
+                                <div class="item sponsor-item">
+                                    <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
+                                        <div class="post-thumb">
+                                            <img class="img-responsive" src="/images/{{$sponsor->logo_path}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                @endforeach
+                                @endif
+                            </div>
+                            <!-- side content end -->
+                        </div> <!-- row end -->
+                    </div> <!-- container end -->
+                </section>
             <!-- Weekly News Area
             ============================================ -->
              
@@ -137,23 +195,23 @@
             ============================================ -->
             <section class="all-category-inner">
                 <div class="container">
-                    <h3>احدث المجلات</h3>
+                    <h3>احدث الاصدرات</h3>
                         <div class="headding-border bg-color-1"></div>
                     <div class="row">
-                        @if (count($latest_channels) > 0)
-                            @foreach ($latest_channels as $channel)
+                        @if (count($latest_magazines) > 0)
+                            @foreach ($latest_magazines as $magazine)
                                 
                             
                             <div class="col-md-4 col-sm-4">
                                   <!-- sports -->
                                 <div class="sports-inner">
-                                    <h3 class="category-headding ">{{$channel['channel_name']}}</h3>
+                                    <h3 class="category-headding ">{{$magazine['magazine_name']}}</h3>
                                     
                                     <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                                         <!-- post image -->
                                         <div class="post-thumb">
-                                            <a href="{{route('channels.show', ['channel'=> $channel['id']])}}">
-                                                <img src="/images/{{$channel['cover_path']}}" height="250" class="img-responsive" alt="">
+                                            <a href="{{route('magazines.show', ['magazine'=> $magazine['id']])}}">
+                                                <img src="/images/{{$magazine['cover_path']}}" height="250" class="img-responsive" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -161,7 +219,7 @@
                                         <div class="post-editor-date">
                                             <!-- post date -->
                                             <div class="post-date">
-                                                <i class="pe-7s-clock"></i>  {{Arabic::since($channel['created_at'])}}
+                                                <i class="pe-7s-clock"></i>  {{Arabic::since($magazine['created_at'])}}
                                             </div>
                                             </div>
                                     </div>

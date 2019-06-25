@@ -29,7 +29,7 @@
                 <td><a href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">{{$article->article_title}}</a></td>
                 <td>{{$article->category->category_name}}</td>
                 <td>{{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}</td>
-                <td><a href="{{route('admin.articles.edit', ['article'=>$article->id])}}" class="btn btn-secondary">تعديل و تعين مجلة</a></td>
+                
                 <td>
     
                         
@@ -42,6 +42,7 @@
                     </form>
                     
                 </td>
+                <td><a href="{{route('admin.articles.edit', ['article'=>$article->id])}}" class="btn btn-secondary">تعديل و تعين مجلة</a></td>
                 
                 <td>     
                     <form action="{{route('admin.articles.destroy', ['article'=>$article->id])}}" method="POST">

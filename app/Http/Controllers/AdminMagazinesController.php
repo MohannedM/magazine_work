@@ -35,8 +35,7 @@ class AdminMagazinesController extends Controller
     public function create()
     {
         //
-        $channels = Channel::where('is_active', 1)->orderBy('created_at', 'desc')->get();
-        return view('admin.magazines.create', compact('channels'));
+        return view('admin.magazines.create');
     }
 
     /**
@@ -48,7 +47,6 @@ class AdminMagazinesController extends Controller
     public function store(CreateMagazineRequest $request)
     {
         //
-        $channel = Channel::findOrFail($request->channel_id);
         $magazine = new Magazine;
 
         $magazine->magazine_name = $request->magazine_name;
@@ -66,9 +64,10 @@ class AdminMagazinesController extends Controller
         //Saving file name to the database
         $magazine->cover_path = $cover_name;
         $magazine->pdf_path = $pdf_name;
+        $magazine->channel_id = 1;
 
         //Creating the new magazine by its channel
-        $channel->magazines()->save($magazine);
+        $magazine->save();
         //redirecting with a temp success session
         return redirect('/admin/magazines')->with('success', 'تم اضافة الإصدار بنجاح');
 
@@ -93,7 +92,45 @@ class AdminMagazinesController extends Controller
      */
     public function edit($id)
     {
+        $magazine = Magazine::findOrFail($id);
+        return view('admin.magazines.edit')->with('magazine', $magazine);
+    }
+    public function update(Request $request, $id)
+    {
+        
         //
+        $magazine = Magazine::findOrFail($id);
+        if($request->has('pdf_path')){
+            //Asigning the uploaded image to a variable
+            $pdf_file = $request->pdf_path;
+            //Asigining the image a new name
+            $pdf_name = time() . $pdf_file->getClientOriginalName();
+            //Moving image to images folder and saving in database
+            $pdf_file->move('images', $pdf_name);
+            $magazine->pdf_path = $$pdf_name;
+        }
+        if($request->has('cover_path')){
+            //Asigning the uploaded image to a variable
+            $file = $request->cover_path;
+            //Asigining the image a new name
+            $cover_name = time() . $file->getClientOriginalName();
+            //Moving image to images folder and saving in database
+            $file->move('images', $cover_name);
+            $magazine->cover_path = $cover_name;
+        }
+        $magazine->magazine_name = $request->magazine_name;
+        $magazine->save();
+        return redirect('/admin/magazines')->with('success', 'تم تعديل الاصدار بنجاح');
+
+    }
+    
+    public function activation(Request $request, $id){
+        //
+        $magazine = Magazine::findOrFail($id);
+        //check activation status and reverse it
+        $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
+        $magazine->save();
+        return back();
     }
     public function addSponsor($magazine_id){
         $sponsors = Sponsor::all();
@@ -123,16 +160,7 @@ class AdminMagazinesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-        $magazine = Magazine::findOrFail($id);
-        //check activation status and reverse it
-        $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
-        $magazine->save();
-        return back();
 
-    }
 
     /**
      * Remove the specified resource from storage.

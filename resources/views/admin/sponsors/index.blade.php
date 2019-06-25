@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-4" v-if="!edit">
                     <h4>أضاف راعي</h4>
-                    <form action="{{route('admin.users.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.sponsors.store')}}" method="POST" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group">
                             <label for="name">أسم الراعي</label>
