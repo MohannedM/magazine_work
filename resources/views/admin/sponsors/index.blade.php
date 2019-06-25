@@ -2,7 +2,6 @@
 @section('content')
 <div>
     <div class="container">
-            @include('includes.messages')
         <div class="row mt-5">
             <div class="col-md-8">
                     

@@ -30,6 +30,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            
+
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                                 <div class="post-thumb img-zoom-in">
                                     <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[0]->magazine_id, 'article'=>$most_viewed[0]->id])}}">
@@ -51,6 +53,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                         <div class="col-sm-3 hidden-xs col-padding">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">

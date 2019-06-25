@@ -58,8 +58,9 @@
                                             <li><a href="{{ route('magazines.index')}}" class="category02">الإصدرات</a></li>
                                             <li><a href="/authors" class="category03">الكتاب </a></li>
                                             <li> <a href="/contact" class="category04">تواصل معنا </a>  </li>
-                                            <li><a href="{{route('create_article')}}" class="category05">اضافة مقالة</a></li>
-
+                                            @if(Auth::check())
+                                                <li><a href="{{route('create_article')}}" class="category05">اضافة مقالة</a></li>
+                                            @endif
 
 
                                         </ul>

@@ -84,12 +84,17 @@ class AdminArticlesController extends Controller
         //
         $article = Article::findOrFail($id);
         if($request->has('article_cover')){
+
             //Asigning the uploaded image to a variable
             $file = $request->article_cover;
             //Asigining the image a new name
             $cover_name = time() . $file->getClientOriginalName();
             //Moving image to images folder and saving in database
             $file->move('images', $cover_name);
+            //deleting old file
+            if(file_exists(public_path().'/images/'.$article->article_cover)){
+                unlink(public_path().'/images/'.$article->article_cover);
+            }
             $article->article_cover = $cover_name;
         }
         $article->article_title = $request->article_title;
@@ -123,7 +128,19 @@ class AdminArticlesController extends Controller
     public function destroy($id)
     {
         //Delete and redirect to the same page
-        Article::findOrFail($id)->delete();
+        $article = Article::findOrFail($id);
+        //Delete Old file
+        if(file_exists(public_path().'/images/'.$article->article_cover)){
+            unlink(public_path().'/images/'.$article->article_cover);
+        }
+        if(count($article->photos)>0){
+            foreach($article->photos as $photo){
+                if(file_exists(public_path().'/images/'.$photo->path)){
+                    unlink(public_path().'/images/'.$photo->path);
+                } 
+            }
+        }
+        $article->delete();
         return back();
     }
 }

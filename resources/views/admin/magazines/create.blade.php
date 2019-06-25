@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="display-4">اضف اصدار</h1>
 <div class="row mt-5 col-md-10 offset-md-1">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <form action="{{route('admin.magazines.store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">

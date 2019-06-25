@@ -107,7 +107,11 @@ class AdminMagazinesController extends Controller
             $pdf_name = time() . $pdf_file->getClientOriginalName();
             //Moving image to images folder and saving in database
             $pdf_file->move('images', $pdf_name);
-            $magazine->pdf_path = $$pdf_name;
+            //deleting old file
+            if(file_exists(public_path().'/images/pdfs/'.$magazine->pdf_path)){
+                unlink(public_path().'/images/pdfs/'.$magazine->pdf_path);
+            }
+            $magazine->pdf_path = $pdf_name;
         }
         if($request->has('cover_path')){
             //Asigning the uploaded image to a variable
@@ -116,6 +120,10 @@ class AdminMagazinesController extends Controller
             $cover_name = time() . $file->getClientOriginalName();
             //Moving image to images folder and saving in database
             $file->move('images', $cover_name);
+            //deleting old file
+            if(file_exists(public_path().'/images/'.$magazine->cover_path)){
+                unlink(public_path().'/images/'.$magazine->cover_path);
+            }
             $magazine->cover_path = $cover_name;
         }
         $magazine->magazine_name = $request->magazine_name;
@@ -126,10 +134,24 @@ class AdminMagazinesController extends Controller
     
     public function activation(Request $request, $id){
         //
-        $magazine = Magazine::findOrFail($id);
-        //check activation status and reverse it
-        $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
-        $magazine->save();
+        
+        // $magazine = Magazine::findOrFail($id);
+        // //check activation status and reverse it
+        // $magazine->is_active == 0 ? $magazine->is_active = 1 : $magazine->is_active = 0;
+        // $magazine->save();
+        $magazines = Magazine::all();
+        foreach($magazines as $magazine){
+            if($magazine->id == $id){
+                $activate_magazine = Magazine::findOrFail($id);
+                //check activation status and reverse it
+                $activate_magazine->is_active = 1;
+                $activate_magazine->save();
+            }else{
+                $magazine->is_active = 0;
+                $magazine->save();
+            }
+        }
+
         return back();
     }
     public function addSponsor($magazine_id){
@@ -171,6 +193,13 @@ class AdminMagazinesController extends Controller
     public function destroy($id)
     {
         $magazine = Magazine::findOrFail($id);
+        //deleting old file
+        if(file_exists(public_path().'/images/'.$magazine->cover_path)){
+            unlink(public_path().'/images/'.$magazine->cover_path);
+        }
+        if(file_exists(public_path().'/images/pdfs/'.$magazine->pdf_path)){
+            unlink(public_path().'/images/pdfs/'.$magazine->pdf_path);
+        }
         $magazine->articles()->delete();
         $magazine->delete();
         return back();

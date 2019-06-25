@@ -47,6 +47,9 @@
             <li class="nav-item px-2 {{ Request::is('admin/comments') ? 'active' : '' }}">
                 <a href="{{route('admin.comments.index')}}" class="nav-link">التعليقات</a>
             </li>
+            <li class="nav-item px-2 {{ Request::is('admin/sponsors') ? 'active' : '' }}">
+                <a href="{{route('admin.sponsors.index')}}" class="nav-link">الرعاة</a>
+            </li>
             </ul>
 
             <ul class="navbar-nav mr-auto">
