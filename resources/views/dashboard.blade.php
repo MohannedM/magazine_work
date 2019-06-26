@@ -38,12 +38,30 @@
                                             @if($index == 1)
                                             <?php $article = App\Article::findOrFail($item['id']);  ?> 
                                             <div class="carousel-item active">
+                                                <a href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">
                                                 <img class="d-block w-100" style="height: 400px;" src="/images/{{$article->article_cover}}" alt="First slide">
+                                                </a>
                                             </div>
                                             @else
                                             <?php $article = App\Article::findOrFail($item['id']);  ?> 
                                             <div class="carousel-item">
+                                            <a href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">
                                                 <img class="d-block w-100" style="height: 400px;" src="/images/{{$article->article_cover}}" alt="Second slide">
+                                            </a>
+                                            <div class="carousel-caption d-none d-md-block text-right">
+                                                    <span class="color-5">{{$article->category->category_name}} </span>
+                                                <h3 class="post-title post-title-size"><a class="text-white" href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}" rel="bookmark">{{$article->article_title}} </a></h3>
+                                                <div class="post-editor-date">
+                                                        <!-- post date -->
+                                                        <div class="post-date">
+                                                            <i class="pe-7s-clock"></i> {{$article->created_at->day}}/{{$article->created_at->month}}/{{$article->created_at->year}}
+                                                        </div>
+                                                        <!-- post comment -->
+                                                        <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count($article->comments)}} </div>
+                                                        <!-- read more -->
+                                                        <a class="readmore pull-left" href="{{route('articles.show', ['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}"><i class="pe-7s-angle-right"></i></a>
+                                                    </div>
+                                            </div>
                                             </div>
                                             @endif
                                             @endforeach
@@ -58,27 +76,7 @@
                                             <span class="sr-only">Next</span>
                                         </a>
                                     </div>
-                            {{-- <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
-                                <div class="post-thumb img-zoom-in">
-                                    <a href="{{route('articles.show', ['magazine_id'=>$most_viewed[0]->magazine_id, 'article'=>$most_viewed[0]->id])}}">
-                                        <img class="entry-thumb" src="/images/{{$most_viewed[0]->article_cover}}" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-info">
-                                    <span class="color-1">{{$most_viewed[0]->category->category_name}} </span>
-                                    <h3 class="post-title post-title-size"><a href="#" rel="bookmark">{{$most_viewed[0]->article_title}}  </a></h3>
-                                    <div class="post-editor-date">
-                                        <!-- post date -->
-                                        <div class="post-date">
-                                            <i class="pe-7s-clock"></i>  {{$most_viewed[0]->created_at->day}}/{{$most_viewed[0]->created_at->month}}/{{$most_viewed[0]->created_at->year}}
-                                        </div>
-                                        <!-- post comment -->
-                                        <div class="post-author-comment"><i class="pe-7s-comment"></i>  {{count($most_viewed[0]->comments)}} </div>
-                                        <!-- read more -->
-                                        <a class="readmore pull-left" href="#"><i class="pe-7s-angle-right"></i></a>
-                                    </div>
-                                </div>
-                            </div> --}}
+
 
 
                         </div>
