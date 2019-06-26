@@ -44,5 +44,6 @@ Route::post('/pdf', 'MagazinesController@show_pdf')->name('pdf.show');
 Route::get('/contact', 'ContactsController@index')->name('contact');
 Route::get('/archives/{year}/{month}', 'ArticlesController@show_archives')->name('archives.show');
 Route::get('/authors', 'AuthorsController@index')->name('authors');
+Route::get('/admin/login', 'AdminController@showAdminLogin');
 
 // Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');

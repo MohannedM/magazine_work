@@ -46,14 +46,17 @@ class HomeController extends Controller
         // Get latest 5 articles
         $articles = Article::where('is_active', 1)->orderBy('created_at', 'desc')->get();
         $articles = $articles->toArray();
-        $firstArticles = array_slice($articles, 0, 2, true);
-        $secondArticles = array_slice($articles, 2, 3, true);
+        $firstArticles = array_slice($articles, 0, 4, true);
+      
+        $secondArticles = array_slice($articles, 4, 3, true);
 
         //Get latest 3 created channels 
         $magazines = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->get();
         $magazines = $magazines->toArray();
         $latest_magazines = array_slice($magazines, 0, 3, true);
-
+        //   foreach($firstArticles as $i => $article){
+        //     $lastAtricles=array_slice($articles,$i,1,true);
+        //   }
         return view('dashboard', compact('categories', 'most_viewed', 'firstArticles','secondArticles', 'latest_magazines', 'archives', 'sponsors', 'most_popular'));
     }
 }

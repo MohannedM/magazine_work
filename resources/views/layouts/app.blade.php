@@ -61,6 +61,11 @@
                                             @if(Auth::check())
                                                 <li><a href="{{route('create_article')}}" class="category05">اضافة مقالة</a></li>
                                             @endif
+                                            @if(Auth::check())
+                                            @if(Auth::user()->is_admin == 1)
+                                            <li><a href="/admin">لوحة الادارة</a></li>
+                                            @endif
+                                            @endif
 
 
                                         </ul>
