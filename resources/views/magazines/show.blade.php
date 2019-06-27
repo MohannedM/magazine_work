@@ -5,12 +5,20 @@
 <div class="py-5 container">
 
             <section class="recent_news_inner">
-                <h1 class="category-headding ">جميع مقلات الاصدار</h1>
-                <div class="headding-border"></div>
                 <div class="row">
-                    @if(Auth::check())
-                        <a href="{{route('articles.create', ['magazine_id'=>$magazine->id])}}" class="btn btn-secondary btn-sm mr-auto">اضافة مقالة</a>
-                    @endif
+                    <div class="col-md-6">
+                        <h1 class="category-headding ">جميع مقلات الاصدار</h1>
+                        <div class="headding-border"></div>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        @if(Auth::check())
+                            <a href="{{route('articles.create', ['magazine_id'=>$magazine->id])}}" class="btn btn-secondary btn-sm">اضافة مقالة</a>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="row">
+                    
 
                     <div id="content-slide" class="owlousel">
                         @if (count($articles) > 0)

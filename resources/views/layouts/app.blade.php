@@ -32,75 +32,73 @@
                 <header>
        
                         <!-- top header -->
-                        <div class="top_banner_wrap">
+                        <div class="top_banner_wrap text-center">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-4 col-sm-4">
+                                    <div class="col-md-4 col-sm-4">
                                         <div class="header-logo">  <!-- logo -->
                                             <a href="index.html">
-                                                <img class="td-retina-data img-responsive" src="/images/main_logo.jpeg" alt="" style="width:280px; height:90px;">
+                                                <img class="td-retina-data img-responsive img-fluid" src="/images/main_logo.jpeg" alt="" style="width:280px; height:90px;">
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-8 col-md-8 col-sm-8 hidden-xs">
+                                    <div class="col-md-8 d-none d-md-block">
                                         <div class="header-banner">
-                                            <a href="#"><img class="td-retina img-responsive" src="/images/transparent_logo.png" alt=""></a>
+                                            <a href="#"><img class="td-retina img-responsive img-fluid" src="/images/transparent_logo.png" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- main navber -->
+                                <nav class="navbar navbar-expand-lg navbar-light py-0">
+                                          
+                                                <ul class="navbar-nav mr-auto">
+                                                    <li class="navbar-list-item nav-item"><a href="/" class="nav-link category01">الصفحة الرئيسية</a></li>
+                                                    <li class="navbar-list-item nav-item"><a href="{{ route('magazines.index')}}" class="nav-link category02">الإصدرات</a></li>
+                                                    <li class="navbar-list-item nav-item"><a href="/authors" class="nav-link category03">الكتاب </a></li>
+                                                    <li class="navbar-list-item nav-item"><a href="/contact" class="nav-link category04">تواصل معنا </a>  </li>
+                                                    <li class="navbar-list-item nav-item"><a href="{{route('create_article')}}" class="nav-link category05">اضافة مقالة</a></li>
+                                                    @if(Auth::check())
+                                                    @if(Auth::user()->is_admin == 1)
+                                                    <li class="navbar-list-item nav-item"><a class="nav-link category03" href="/admin">لوحة الادارة</a></li>
+                                                    @endif
+                                                    @endif
+        
+        
+                                                </ul>
+        
+                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                        <ul class="navbar-nav mr-auto">
+                                                    @guest
+                                                    <li class="nav-item navbar-list-item">
+                                                        <a class="nav-link  category04 " href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
+                                                    </li>
+                                                    <li class="nav-item navbar-list-item">
+                                                        <a class="nav-link category01" href="{{ route('register') }}">{{ __('تسجيل ') }}</a>
+                                                    </li>
+                                                @else
+                                                    <li class="nav-item dropdown navbar-list-item">
+                                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                            {{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
+                                                        </a>
+                            
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                               onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
+                                                                {{ __('تسجيل الخروج') }}
+                                                            </a>
+                            
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                        </div>
+                                                    </li>
+                                                @endguest
+                                                </ul>
+                                                </div>
+                                </nav>
                             </div>
                         </div>
-                        <!-- main navber -->
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                                  
-                                        <ul class="navbar-nav mr-auto">
-                                            <li class="active"><a href="/" class="category01">الصفحة الرئيسية</a></li>
-                                            <li><a href="{{ route('magazines.index')}}" class="category02">الإصدرات</a></li>
-                                            <li><a href="/authors" class="category03">الكتاب </a></li>
-                                            <li> <a href="/contact" class="category04">تواصل معنا </a>  </li>
-                                            @if(Auth::check())
-                                                <li><a href="{{route('create_article')}}" class="category05">اضافة مقالة</a></li>
-                                            @endif
-                                            @if(Auth::check())
-                                            @if(Auth::user()->is_admin == 1)
-                                            <li><a href="/admin">لوحة الادارة</a></li>
-                                            @endif
-                                            @endif
-
-
-                                        </ul>
-
-                                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                <ul class="navbar-nav mr-auto">
-                                            @guest
-                                            <li class="nav-item category04">
-                                                <a class="nav-link" href="{{ route('login') }}">{{ __('تسجيل الدخول') }}</a>
-                                            </li>
-                                            <li class="nav-item category01">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('تسجيل ') }}</a>
-                                            </li>
-                                        @else
-                                            <li class="nav-item dropdown">
-                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                    {{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
-                                                </a>
-                    
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                       onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
-                                                        {{ __('تسجيل الخروج') }}
-                                                    </a>
-                    
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        @endguest
-                                        </ul>
-                                        </div>
-                        </nav>
                     </header>
                                               <!-- Authentication Links -->
          

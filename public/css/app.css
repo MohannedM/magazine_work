@@ -31645,6 +31645,21 @@ html {
   min-width: 90%;
 }
 
+.navbar-list-item {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.news-img-slide {
+  height: 200px;
+  width: 325px;
+}
+
+.small-news-images {
+  height: 150px !important;
+  width: 220px !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

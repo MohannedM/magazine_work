@@ -37,7 +37,6 @@
                 <span class="invalid-feedback">قسم المقالة مطلوب</span>
             </div>
             <input type="hidden" name="magazine_id" value="{{$magazine_id}}">
-            <input type="hidden" name="channel_id" value="{{$channel_id}}">
             <input type="submit" class="btn btn-primary mt-3" value="اضافة">
         </form>
     </div>

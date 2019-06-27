@@ -136,7 +136,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-sm-12"> <!-- right content inner -->
-                                <h2 class="category-headding ">أخبار حديثة</h2>
+                                <h2 class="category-headding ">أخبار ثبات</h2>
                                 <div class="headding-border"></div>
                                 {{-- <div class="row">
                                     <div id="content-slide" class="owlousel">
@@ -182,11 +182,6 @@
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="sr-only">Next</span>
                                               </a>
-                                    {{-- <ol class="carousel-indicators">
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class=" "></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                    </ol> --}}
                                     
                                     <div class="carousel-inner" >
                                             @foreach ($firstArticles as $index => $article)
@@ -198,17 +193,41 @@
                                             <div class="carousel-item active">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                            <p style="height:30px;"> {{$article['article_title']}}  </p>  
-                                           
-                                                            <img src="/images/{{$article['article_cover']}}" alt=""  style="height:327px; width:100%;">
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                            <h3 style="height:30px;"> {{$article['article_title']}}  </h3>  
+                                                            </a>
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                            <img class="img-responsive img-fluid news-img-slide" src="/images/{{$article['article_cover']}}" alt="">
+                                                            </a>
+                                                            <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                                <div class="post-editor-date">
+                                                                    <div class="post-date">
+                                                                        <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
+                                                                    </div>
+                                                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
+                                                                </div>
+                                                                <p> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
+                                                            </div>
                                                             
                                                         
                                                     </div>
                                                     @foreach ($lastAtricles as $article2)
     
                                                     <div class="col-md-6">
-                                                            <p style="height:30px;"> {{$article2['article_title']}}  </p>   
-                                                     <img src="/images/{{$article2['article_cover']}}" alt=""  style="height:327px; width:100%;">
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}">
+                                                            <h3 style="height:30px;"> {{$article2['article_title']}}  </h3>   </a>
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}">
+                                                     <img class="img-responsive img-fluid news-img-slide" src="/images/{{$article2['article_cover']}}" alt="">
+                                                    </a>
+                                                    <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                        <div class="post-editor-date">
+                                                            <div class="post-date">
+                                                                <i class="pe-7s-clock"></i> {{Arabic::since($article2['created_at'])}}
+                                                            </div>
+                                                            <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article2['id'])->comments)}} </div>
+                                                        </div>
+                                                        <p> {{substr($article2['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}">...اقرأ أكثر</a></p>
+                                                    </div>
                                                               
                                                     </div>
                                                     @endforeach
@@ -221,16 +240,41 @@
                                         <div class="carousel-item ">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p style="height:30px;"> {{$article['article_title']}}  </p>                            
-                                                     <img src="/images/{{$article['article_cover']}}" alt="" style="height:327px;width:100%;">
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                        <h3 style="height:30px;"><a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}"> {{$article['article_title']}}</a></h3>                            
+                                                            </a>
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
+                                                        <img class="img-responsive img-fluid news-img-slide" src="/images/{{$article['article_cover']}}" alt="">
+                                                            </a>
+                                                            
+                                                            <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                                <div class="post-editor-date">
+                                                                    <div class="post-date">
+                                                                        <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
+                                                                    </div>
+                                                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
+                                                                </div>
+                                                                <p> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
+                                                            </div>
                                                     
                                                     </div>
                                                     @foreach ($lastAtricles as $article2)
     
                                                     <div class="col-md-6">
-                                                            <p style="height:30px;"> {{$article2['article_title']}}  </p>   
-                                                     <img src="/images/{{$article2['article_cover']}}" alt="" style="height:327px;width:100%;">
-                                                              
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}"> 
+                                                            <h3 style="height:30px;">{{$article2['article_title']}}</a></h3>   
+                                                            <a href="{{route('articles.show', ['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}"> 
+                                                            <img class="img-responsive img-fluid news-img-slide" src="/images/{{$article2['article_cover']}}" alt="">
+                                                            </a>
+                                                            <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                                <div class="post-editor-date">
+                                                                    <div class="post-date">
+                                                                        <i class="pe-7s-clock"></i> {{Arabic::since($article2['created_at'])}}
+                                                                    </div>
+                                                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article2['id'])->comments)}} </div>
+                                                                </div>
+                                                                <p> {{substr($article2['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article2['magazine_id'], 'article'=>$article2['id']])}}">...اقرأ أكثر</a></p>
+                                                            </div>
                                                     </div>
                                                     @endforeach
                                                 </div>
@@ -254,23 +298,24 @@
                                             @if (count($secondArticles) > 0)
                                             @foreach ($secondArticles as $article)
                                                 <div class="col-md-4">
-                                                    <div class="item">
+                                                    <div>
                                                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s"><!-- image -->
-                                                            <p>{{$article['article_title']}}</p>
+                                                            
                                                             <div class="post-thumb">
                                                                 <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">
-                                                                    <img class="img-responsive" src="/images/{{$article['article_cover']}}" alt="">
+                                                                    <img class="img-responsive img-fluid small-news-images" src="/images/{{$article['article_cover']}}" alt="">
                                                                 </a>
                                                             </div>
+                                                            {{-- <h4 style="height:30px;"><a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}"> {{$article['article_title']}}</a></h4> --}}
                                                         </div>
-                                                        <div class="post-title-author-details"  style="width:80%; marign:auto;">
+                                                        <div class="post-title-author-details">
+                                                            <h4> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ المزيد</a></h4>
                                                             <div class="post-editor-date">
                                                                 <div class="post-date">
                                                                     <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
                                                                 </div>
                                                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> {{count(App\Article::find($article['id'])->comments)}} </div>
                                                             </div>
-                                                            <p> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ أكثر</a></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -384,11 +429,12 @@
                                                                     <!-- post image -->
                                                                     <div class="post-thumb">
                                                                         <a href="{{route('articles.show', ['magazine_id'=> $article['magazine_id'], 'article'=>$article['id']])}}">
-                                                                            <img src="/images/{{$article->article_cover}}" class="img-responsive" alt="">
+                                                                            <img src="/images/{{$article->article_cover}}" class="img-responsive img-fluid small-news-images" alt="">
                                                                         </a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="post-title-author-details">
+                                                                    <h4> {{substr($article->article_content, 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">...اقرأ المزيد</a></h4>
                                                                     <div class="post-editor-date">
                                                                         <!-- post date -->
                                                                         <div class="post-date">
