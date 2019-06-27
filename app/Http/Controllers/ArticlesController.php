@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Magazine;
 use App\Category;
 use App\Comment;
+use App\Sponsor;
 
 class ArticlesController extends Controller
 {
@@ -88,8 +89,8 @@ class ArticlesController extends Controller
 
         if($request->magazine_id != 0){
             return redirect('/articles/'. $article->id .'/photos')->with('success','تم اضافة المقالة بنجاح.');
-        }
         return redirect()->route('photos.create', ['article_id'=>$article->id])->with('success','تم اضافة المقالة بنجاح.');
+        }
     }
 
     /**
@@ -105,11 +106,13 @@ class ArticlesController extends Controller
         $comments = $article->comments()->where('is_active',1)->orderBy('created_at', 'desc')->get();
         $article->views > 0 ? $article->views++ : $article->views = 1;
         $article->save();
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+
         
         if($article->is_active != 1){
             return redirect('/');
         }
-        return view('articles.show', compact('article', 'comments'));
+        return view('articles.show', compact('article', 'comments','sponsors'));
     }
 
     public function show_archives($year, $month)
