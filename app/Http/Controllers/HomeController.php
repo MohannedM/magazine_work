@@ -48,7 +48,7 @@ class HomeController extends Controller
         $articles = $articles->toArray();
         $firstArticles = array_slice($articles, 0, 4, true);
       
-        $secondArticles = array_slice($articles, 0, 3, true);
+        $secondArticles = array_slice($articles, 4, 3, true);
 
         //Get latest 3 created channels 
         $magazines = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->get();

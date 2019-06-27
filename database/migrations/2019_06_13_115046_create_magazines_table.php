@@ -15,7 +15,7 @@ class CreateMagazinesTable extends Migration
     {
         Schema::create('magazines', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('channel_id')->unsigned();
+            $table->integer('channel_id')->unsigned()->default(1);
             $table->string('magazine_name');
             $table->tinyInteger('is_active')->default(0);
             $table->text('pdf_path');
