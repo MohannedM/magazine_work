@@ -20,10 +20,10 @@
     <div class="row">
         @if(count($magazines) > 0)
             @foreach ($magazines as $magazine)
-            <div class="col-md-6">
-                    <div class="row space-16">&nbsp;</div>
+            <div class="col-md-3">
+                    <div class="row space-2">&nbsp;</div>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-md-12">
                             <div class="thumbnail">
                                 <div class="caption text-center" >
                                     <div class="position-relative">

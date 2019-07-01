@@ -39,6 +39,9 @@ class HomeController extends Controller
         }
         //Get sponsors
         $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+        $sponsorsArr = $sponsors->toArray();
+        $latestSponsors = array_slice($sponsorsArr, 0 , 10);
+
         //Most 10 viewed articles
         $most_popular = Article::where('is_active', 1)->orderBy('views', 'desc')->get();
         $most_popular = $most_popular->toArray();
@@ -48,7 +51,7 @@ class HomeController extends Controller
         $articles = $articles->toArray();
         $firstArticles = array_slice($articles, 0, 4, true);
       
-        $secondArticles = array_slice($articles, 4, 3, true);
+        $secondArticles = array_slice($articles, 0, 3, true);
 
         //Get latest 3 created channels 
         $magazines = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->get();
@@ -57,6 +60,6 @@ class HomeController extends Controller
         //   foreach($firstArticles as $i => $article){
         //     $lastAtricles=array_slice($articles,$i,1,true);
         //   }
-        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles','secondArticles', 'latest_magazines', 'archives', 'sponsors', 'most_popular'));
+        return view('dashboard', compact('categories', 'most_viewed', 'firstArticles','secondArticles', 'latest_magazines', 'archives', 'latestSponsors', 'most_popular'));
     }
 }
