@@ -124,7 +124,7 @@
             </section>
             @endif	 --}}
 
-            <section class="recent_news_inner d-none d-md-block my-5">
+            <section class="recent_news_inner my-5">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-sm-8"> <!-- right content inner -->

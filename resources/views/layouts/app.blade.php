@@ -50,23 +50,25 @@
                                 </div>
                                 <!-- main navber -->
                                 <nav class="navbar navbar-expand-lg navbar-light py-0">
-                                          
-                                                <ul class="navbar-nav mr-auto">
-                                                    <li class="navbar-list-item nav-item"><a href="/" class="nav-link category01">الصفحة الرئيسية</a></li>
-                                                    <li class="navbar-list-item nav-item"><a href="{{ route('magazines.index')}}" class="nav-link category02">الإصدرات</a></li>
-                                                    <li class="navbar-list-item nav-item"><a href="/authors" class="nav-link category03">الكتاب </a></li>
-                                                    <li class="navbar-list-item nav-item"><a href="/contact" class="nav-link category04">تواصل معنا </a>  </li>
-                                                    <li class="navbar-list-item nav-item"><a href="{{route('create_article')}}" class="nav-link category05">اضافة مقالة</a></li>
-                                                    @if(Auth::check())
-                                                    @if(Auth::user()->is_admin == 1)
-                                                    <li class="navbar-list-item nav-item"><a class="nav-link category03" href="/admin">لوحة الادارة</a></li>
-                                                    @endif
-                                                    @endif
-        
-        
-                                                </ul>
-        
-                                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                
+                                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav">
+                                            <li class="navbar-list-item nav-item"><a href="/" class="nav-link category01">الصفحة الرئيسية</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="{{ route('magazines.index')}}" class="nav-link category02">الإصدرات</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="/authors" class="nav-link category03">الكتاب </a></li>
+                                            <li class="navbar-list-item nav-item"><a href="/contact" class="nav-link category04">تواصل معنا </a>  </li>
+                                            <li class="navbar-list-item nav-item"><a href="{{route('create_article')}}" class="nav-link category05">اضافة مقالة</a></li>
+                                            @if(Auth::check())
+                                            @if(Auth::user()->is_admin == 1)
+                                            <li class="navbar-list-item nav-item"><a class="nav-link category03" href="/admin">لوحة الادارة</a></li>
+                                            @endif
+                                            @endif
+    
+    
+                                        </ul>
                                                         <ul class="navbar-nav mr-auto">
                                                     @guest
                                                     <li class="nav-item navbar-list-item">
