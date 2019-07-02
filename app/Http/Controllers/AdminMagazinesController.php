@@ -60,7 +60,7 @@ class AdminMagazinesController extends Controller
         $pdf_name = time() . $pdf->getClientOriginalName();
         //Moving image to images folder
         $photo->move('images', $cover_name);
-        $pdf->move('pdfs', $pdf_name);
+        $pdf->move('images/pdfs', $pdf_name);
         //Saving file name to the database
         $magazine->cover_path = $cover_name;
         $magazine->pdf_path = $pdf_name;
