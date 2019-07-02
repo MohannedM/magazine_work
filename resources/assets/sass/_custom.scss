@@ -36,3 +36,15 @@ body, html{
     height: 150px !important;
     width: 220px !important; 
 }
+
+
+
+
+@media(max-width:768px){
+    .text-center-responsive{
+        text-align: center;
+        img{
+            width: 75% !important;
+        }
+    }
+}

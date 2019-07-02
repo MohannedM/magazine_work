@@ -32,7 +32,7 @@
                 <header>
        
                         <!-- top header -->
-                        <div class="top_banner_wrap text-center">
+                        <div class="top_banner_wrap mt-0 text-center">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4">

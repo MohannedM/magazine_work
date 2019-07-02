@@ -141,7 +141,7 @@
          
     
     
-                                <div class="row">
+                                <div class="row text-center-responsive">
                                 @if (count($firstArticles) > 0)
                                 
                                 <div id="carousel2" class="carousel slide mb-2" data-ride="carousel" style="width:100%">
@@ -267,7 +267,7 @@
 
 
     
-                                <div class="row my-3">
+                                <div class="row my-3 text-center-responsive">
                                         <div id="content-slide" class="owlousel">
                                             @if (count($secondArticles) > 0)
                                             @foreach ($secondArticles as $article)
