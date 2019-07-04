@@ -92,7 +92,7 @@ class AuthorsController extends Controller
             $img_path->move('images', $img_name);
             //deleting old file
             if(file_exists(public_path().'/images/'.$user->img_path)){
-                unlink(public_path().'/images/pdfs/'.$user->img_path);
+                unlink(public_path().'/images/'.$user->img_path);
             }
             $user->img_path = $img_name;
         }

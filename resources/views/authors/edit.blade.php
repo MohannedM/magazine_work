@@ -19,7 +19,7 @@
                     <div class="text-center">
                             <img class="img-responsive img-fluid w-75 rounded-circle float-left" src="/images/{{$user->img_path ? $user->img_path : 'user.png'}}" alt="">     
                       
-                      <input type="file" class="form-control">
+                      <input type="file" class="form-control" name="img_path">
                     </div>
                 
                   
