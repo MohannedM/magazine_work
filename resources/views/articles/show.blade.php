@@ -153,7 +153,7 @@
             <li>
                 <div class="comment-main-level">
                     <!-- Avatar -->
-                    <div class="comment-avatar"><img src="/images/user.png "style="border-radius: 50%;" alt=""></div>
+                    <div class="comment-avatar"><img src="/images/{{$comment->img_path}} "style="border-radius: 50%;" alt=""></div>
                     <!-- Contenedor del Comentario -->
                     <div class="comment-box">
                         <div class="comment-head">
@@ -243,7 +243,7 @@
                         <ul class="comments-list reply-list">
                     <li>
                         <!-- Avatar -->
-                        <div class="comment-avatar"><img src="/images/user.png " style="border-radius:50%;" alt=""></div>
+                        <div class="comment-avatar"><img src="/images/{{$reply->img_path}} " style="border-radius:50%;" alt=""></div>
                         <!-- Contenedor del Comentario -->
                         <div class="comment-box">
                             <div class="comment-head">

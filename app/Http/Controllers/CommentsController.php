@@ -44,11 +44,14 @@ class CommentsController extends Controller
         $comment->comment_content = $request->comment_content;
         $comment->username=$request->username;
         $comment->email=$request->email;
-
+        if(Auth::check()){
+            $comment->img_path=auth()->user()->img_path;
+             }
         //Checking if the logged in user is an admin and if so status will be active and its delault if there is no logged in user is zero
         if(Auth::check()){
         auth()->user()->is_admin == 1 ? $comment->is_active = 1 : $comment->is_active = 0;
         }
+        
            $article->comments()->save($comment);
             
            return back();
