@@ -62,6 +62,9 @@
                                             <li class="navbar-list-item nav-item"><a href="/contact" class="nav-link category04">تواصل معنا </a>  </li>
                                             <li class="navbar-list-item nav-item"><a href="{{route('create_article')}}" class="nav-link category05">اضافة مقالة</a></li>
                                             @if(Auth::check())
+                                            <li class="navbar-list-item nav-item"><a href="{{route('profile')}}" class="nav-link category07">الصفحة الشخصية</a></li>
+                                            @endif
+                                            @if(Auth::check())
                                             @if(Auth::user()->is_admin == 1)
                                             <li class="navbar-list-item nav-item"><a class="nav-link category03" href="/admin">لوحة الادارة</a></li>
                                             @endif
