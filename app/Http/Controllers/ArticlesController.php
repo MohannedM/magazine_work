@@ -40,7 +40,8 @@ class ArticlesController extends Controller
         $article->save();
         $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
 
-        
+          
+
         if($article->is_active != 1){
             return redirect('/');
         }
