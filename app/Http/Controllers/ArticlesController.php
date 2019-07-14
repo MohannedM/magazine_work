@@ -11,6 +11,7 @@ use App\Category;
 use App\Comment;
 use App\Sponsor;
 
+
 class ArticlesController extends Controller
 {
     /**
@@ -127,6 +128,22 @@ class ArticlesController extends Controller
 
             
         return view('archives.index',compact('archives'));
+
+
+    }
+    public function show_all()
+    {
+        $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
+        $articles = $magazine->articles()->get();
+       return view('articles.showall',compact('articles'));
+
+
+    }
+    public function show_hotest()
+    {
+        $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
+        $hotest_articles= $magazine->articles()->orderBy('views', 'desc')->limit(3)->get();
+       return view('articles.showhotest',compact('hotest_articles'));
 
 
     }

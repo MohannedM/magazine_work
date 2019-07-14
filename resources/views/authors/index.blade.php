@@ -22,14 +22,14 @@
                 <div class="row">
                         @if(count($users) > 0)
                     @foreach ($users as $user)                  
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="row space-16">&nbsp;</div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <div class="thumbnail">
                                     <div class="caption text-center" >
                                         <div class="position-relative">
-                                            <img src="/images/author.png" style="width:176px;">
+                                            <img src="/images/{{$user->img_path}}" style="width:176px;height:235px;">
                                         </div>
                                     <p><i class="glyphicon glyphicon-user light-red lighter bigger-120"></i>&nbsp; الكاتب: {{$user->first_name}} {{$user->last_name}}</p>
                                     </div>

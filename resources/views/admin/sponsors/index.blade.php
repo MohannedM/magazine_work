@@ -6,7 +6,7 @@
             <div class="col-md-8">
                     
                     <div>
-                        <h1 class="display-4 mb-3">الرعة</h1>
+                        <h1 class="display-4 mb-3">الرعاة</h1>
                     </div>
                     @if(count($sponsors)>0)
                     <table class="table table-striped"">

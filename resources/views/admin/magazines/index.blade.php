@@ -19,6 +19,7 @@
                     <th>غلاف الإصدار</th>
                     <th>عنوان الإصدار</th>
                     <th>عدد المقالت</th>
+                    <th> كلمة العدد</th>
                     <th>اضافة رعاة</th>
                     <th>الإصدار PDF</th>
                     <th>تفعيل/ايقاف</th>
@@ -34,6 +35,35 @@
                         <td><img src="/images/{{$magazine->cover_path}}" style="height:50px" class="img-fluid"></td>
                         <td><a href="{{route('magazines.show', ['magazine'=>$magazine->id])}}">{{$magazine->magazine_name}}</a></td>
                         <td>{{count($magazine->articles)}}</td>
+                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$magazine->id}}">
+                                {{$magazine->title}} <br> تغيير
+                              </button>
+                            
+    <div class="modal fade" id="{{$magazine->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">اضافة او تغيير كلمة العدد</h5>
+              
+                </div>
+            <form method="GET" action="/add_title/{{$magazine->id}}">
+                <div class="modal-body">
+                  
+                 
+                    <div class="form-group">
+                      <textarea class="form-control" name="title" id="message-text"></textarea>
+                    </div>
+                 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                  <input  type="submit" class="btn btn-primary" value="حفظ" >
+                </div>
+            </form>
+              </div>
+            </div>
+          </div>
+             </td>
                         <td><a href="{{route('magazine.sponsors', ['magazine_id'=>$magazine->id])}}" class="btn btn-primary">اضافة رعاة</a></td>
                         <td><a class="btn btn-info" target="_blank" href="/images/pdfs/{{$magazine->pdf_path}}">{{$magazine->magazine_name}} PDF</a></td>
                         
@@ -64,5 +94,7 @@
             @endif
         </div>
     </div>
+
+
 
 @endsection

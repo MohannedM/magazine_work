@@ -46,6 +46,18 @@ Route::get('/archives/{year}/{month}', 'ArticlesController@show_archives')->name
 Route::get('/authors', 'AuthorsController@index')->name('authors');
 Route::get('/admin/login', 'AdminController@showAdminLogin');
 Route::resource('/authors', 'AuthorsController');
+Route::resource('/sponsors', 'SponsorsController');
+Route::resource('/sites', 'SitesController');
+Route::resource('/admin/sites', 'AdminSitesController', ['as'=>'admin']);
 Route::get('/profile', 'AuthorsController@profile')->name('profile');
+Route::get('/articles_title', 'MagazinesController@latest');
+Route::get('/add_title/{id}', 'MagazinesController@add_title');
+Route::get('/show_all', 'ArticlesController@show_all');
+Route::get('/show_hotest', 'ArticlesController@show_hotest');
+
+
+
+
+
 
 // Route::get('/channels/{id}/magazines/create', 'MagazinesController@create');

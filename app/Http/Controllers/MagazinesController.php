@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Magazine;
 use App\Channel;
 use App\Article;
+use App\Category;
 use App\Http\Requests\CreateMagazineRequest;
 
 class MagazinesController extends Controller
@@ -17,8 +18,8 @@ class MagazinesController extends Controller
      */
     public function __construct()
     {
-           $this->middleware('auth')->except(['index', 'show','show_pdf']);
-           $this->middleware('Admin')->except(['index', 'show','show_pdf']);
+           $this->middleware('auth')->except(['index', 'show','show_pdf','latest','add_title']);
+           $this->middleware('Admin')->except(['index', 'show','show_pdf','latest','add_title']);
 
     }
 
@@ -105,6 +106,25 @@ class MagazinesController extends Controller
         //Get the latest magazine
         $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
         return view('pdf.latest')->with('magazine', $magazine);
+    }
+
+    
+    
+    public function latest(){
+        // //Get the latest magazine
+         $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
+         $categories=Category::all();
+         return view('magazines.latest',compact('magazine','categories'));
+      
+    }
+
+    public function add_title(Request $request,$id){
+        // // //Get the latest magazine
+          $magazine =Magazine::findOrFail($id);
+          $magazine->title = $request->title;
+          $magazine->save();
+          return back();
+     
     }
     
 

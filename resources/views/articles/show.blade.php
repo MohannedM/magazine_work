@@ -90,7 +90,7 @@
                         @if(Auth::check())
                         <div class="col-sm-6">
                             <span class="input">
-                                <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1">
+                                <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1" required>
                                 <label class="align-center input_label" for="input-1">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
                                    <span class="input_label_content" data-content="اسمك"></span>
                                 </label>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="col-sm-6">
                                 <span class="input">
-                                        <input class="input_field" name="email" type="hidden" value="{{Auth::user()->email }} " id="input-1">
+                                        <input class="input_field" name="email" type="hidden" value="{{Auth::user()->email }} " id="input-1" required>
                                         <label class="align-center input_label" for="input-2">{{Auth::user()->email }} </label>
                                     <span class="input_label_content" data-content="بريدك الالكتروني"> </span>
                                     </label>
@@ -108,7 +108,7 @@
                     @else
                     <div class="col-sm-6">
                         <span class="input">
-                            <input class="input_field" name="username" type="text" id="input-1">
+                            <input class="input_field" name="username" type="text" id="input-1" required>
                             <label class="input_label" for="input-1">
                                 <span class="input_label_content" data-content="اسمك">اسمك</span>
                             </label>
@@ -117,7 +117,7 @@
                   
                     <div class="col-sm-6">
                         <span class="input">
-                            <input class="input_field" name="email" type="text" id="input-2">
+                            <input class="input_field" name="email" type="email" id="input-2" required>
                             <label class="input_label" for="input-2">
                                 <span class="input_label_content" data-content="بريدك الالكتروني">بريدك الالكتروني</span>
                             </label>
@@ -126,7 +126,7 @@
                     @endif
                     <div class="col-sm-12">
                         <span class="input">
-                            <textarea class="input_field" name="comment_content" id="message"></textarea>
+                            <textarea class="input_field" name="comment_content" id="message" required></textarea>
                             <label class="input_label" for="message">
                                 <span class="input_label_content" data-content="رسالتك">رسالتك</span>
                             </label>
@@ -194,7 +194,7 @@
                                                                 @if(Auth::check())
                                                                 <div class="col-sm-6">
                                                                     <span class="input">
-                                                                        <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1">
+                                                                        <input class="input_field" name="username" type="hidden" value="{{Auth::user()->first_name }} {{Auth::user()->last_name }}" id="input-1" required>
                                                                         <label class="align-center input_label" for="input-1">{{Auth::user()->first_name }} {{Auth::user()->last_name }} </label>
                                                                            <span class="input_label_content" data-content="اسمك"></span>
                                                                         </label>
@@ -205,7 +205,7 @@
                                                             @else
                                                             <div class="col-sm-6">
                                                                 <span class="input">
-                                                                    <input class="input_field" name="username" type="text" id="input-1">
+                                                                    <input class="input_field" name="username" type="text" id="input-1" required>
                                                                     <label class="input_label" for="input-1">
                                                                         <span class="input_label_content" data-content="اسمك">اسمك</span>
                                                                     </label>
@@ -216,7 +216,7 @@
                                                             @endif
                                                             <div class="col-sm-12">
                                                                 <span class="input">
-                                                                    <textarea class="input_field" name="reply_content" id="message"></textarea>
+                                                                    <textarea class="input_field" name="reply_content" id="message" required></textarea>
                                                                     <label class="input_label" for="message">
                                                                         <span class="input_label_content" data-content="رسالتك">رسالتك</span>
                                                                     </label>

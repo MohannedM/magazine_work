@@ -20,6 +20,7 @@ class CreateMagazinesTable extends Migration
             $table->tinyInteger('is_active')->default(0);
             $table->text('pdf_path');
             $table->text('cover_path');
+            $table->text('title');
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
             $table->timestamps();
         });

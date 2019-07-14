@@ -50,6 +50,9 @@
             <li class="nav-item px-2 {{ Request::is('admin/sponsors') ? 'active' : '' }}">
                 <a href="{{route('admin.sponsors.index')}}" class="nav-link">الرعاة</a>
             </li>
+            <li class="nav-item px-2 {{ Request::is('admin/sites') ? 'active' : '' }}">
+                <a href="{{route('admin.sites.index')}}" class="nav-link">المواقع</a>
+            </li>
             </ul>
 
             <ul class="navbar-nav mr-auto">
@@ -58,16 +61,7 @@
                         <i class="fas fa-user"></i> مرحبا {{Auth::user()->first_name}} {{Auth::user()->last_name}}
                     </a>
                 </li>
-            {{-- <li class="nav-item dropdown mr-3">
-                <div class="dropdown-menu">
-                <a href="profile.html" class="dropdown-item">
-                    <i class="fas fa-user-circle"></i> Profile
-                </a>
-                <a href="settings.html" class="dropdown-item">
-                    <i class="fas fa-cog"></i> Settings
-                </a>
-                </div>
-            </li> --}}
+       
             <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();

@@ -57,9 +57,17 @@
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul class="navbar-nav">
                                             <li class="navbar-list-item nav-item"><a href="/" class="nav-link category01">الصفحة الرئيسية</a></li>
-                                            <li class="navbar-list-item nav-item"><a href="{{ route('magazines.index')}}" class="nav-link category02">الإصدرات</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="{{ route('magazines.index')}}" class="nav-link category02">الاعداد السابقة</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="/articles_title" class="nav-link category02"> عنواين المقالات</a></li>
                                             <li class="navbar-list-item nav-item"><a href="/authors" class="nav-link category03">الكتاب </a></li>
+                                            <li class="navbar-list-item nav-item"><a href="#" class="nav-link category02">المكتبة</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="/sites" class="nav-link category02">مواقع تخصك</a></li>
+                                            <li class="navbar-list-item nav-item"><a href="/sponsors" class="nav-link category02">الرعاة</a></li>
+                                           @if(Auth::check())
+                                            @if(Auth::user()->is_admin == 0)
                                             <li class="navbar-list-item nav-item"><a href="/contact" class="nav-link category04">تواصل معنا </a>  </li>
+                                            @endif
+                                            @endif
                                             <li class="navbar-list-item nav-item"><a href="{{route('create_article')}}" class="nav-link category05">اضافة مقالة</a></li>
                                             @if(Auth::check())
                                             <li class="navbar-list-item nav-item"><a href="{{route('profile')}}" class="nav-link category07">الصفحة الشخصية</a></li>
