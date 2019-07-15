@@ -35,8 +35,9 @@
                         <td><img src="/images/{{$magazine->cover_path}}" style="height:50px" class="img-fluid"></td>
                         <td><a href="{{route('magazines.show', ['magazine'=>$magazine->id])}}">{{$magazine->magazine_name}}</a></td>
                         <td>{{count($magazine->articles)}}</td>
-                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$magazine->id}}">
-                                {{$magazine->title}} <br> تغيير
+                    <td> <textarea style="  overflow-y: scroll;height: 80px;resize: none;">     {{$magazine->title}} </textarea>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$magazine->id}}" styel="width=65px;height:30px;">
+                            تغيير
                               </button>
                             
     <div class="modal fade" id="{{$magazine->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
