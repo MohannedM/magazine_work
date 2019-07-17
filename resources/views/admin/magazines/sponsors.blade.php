@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     
-<div class="container">
+<div class="container-fluid">
     <div class="row mt-5">
         <div class="col-md-12">
                 

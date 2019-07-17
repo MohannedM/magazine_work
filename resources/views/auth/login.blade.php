@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <section class="login-reg-inner">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="login-form-inner">

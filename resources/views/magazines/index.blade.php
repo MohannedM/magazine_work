@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="py-5 container">
+<div class="py-5 container-fluid">
         <div class="row">
                 <div class="col-md-6">
                     <h1 class="mb-3 display-4">جميع الأصدرات</h1>

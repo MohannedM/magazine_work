@@ -2,7 +2,7 @@
 
 @section('content')
 <?php use Arabic\Arabic; ?>
-<div class="py-5 container">
+<div class="py-5 container-fluid">
 
             <section class="recent_news_inner">
                 <div class="row">

@@ -4,7 +4,7 @@
             <div class="se-pre-con" style="display: none;"></div>
             {{-- @if(count($most_viewed)>=3)
             <section class="news-feed">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row row-margin">
                         <div class="col-sm-3  d-none d-md-block mb-3">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
@@ -125,9 +125,9 @@
             @endif	 --}}
 
             <section class="recent_news_inner my-5">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-8 col-sm-8"> <!-- right content inner -->
+                            <div class="col-md-9 col-sm-9"> <!-- right content inner -->
 
                                 {{-- the flip book --}}
                                 <div class="mb-5">
@@ -384,7 +384,7 @@
 
 
 
-                            <div class="col-md-4 d-none d-md-block">
+                            <div class="col-md-3 d-none d-md-block">
                                 <h2 class="category-headding ">الرعاة</h2>
                                 <div class="headding-border"></div>
                             @if (count($latestSponsors) > 0)
@@ -431,7 +431,7 @@
                 </section>
     
                 <section class="recent_news_inner">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-8 col-sm-12"> <!-- right content inner -->
      
@@ -475,7 +475,7 @@
                 <!-- article section Area
                 ============================================ -->
                 <div class="lat_arti_cont_wrap">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-8">  <!-- article -->	 				
                                 

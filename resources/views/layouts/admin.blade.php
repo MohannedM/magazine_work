@@ -22,7 +22,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-        <div class="container">
+        <div class="container-fluid">
         <a href="/" class="navbar-brand">المجلة</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -80,7 +80,7 @@
 
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-primary text-white">
-        <div class="container">
+        <div class="container-fluid">
         <div class="row">
             <div>
             <h1>

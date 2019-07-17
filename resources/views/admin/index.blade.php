@@ -5,7 +5,7 @@
 
   <!-- POSTS -->
   <section id="posts">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-9">
           <div class="card">
@@ -125,7 +125,7 @@
 
      <!-- FOOTER -->
      <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col">
               <p class="lead text-center">

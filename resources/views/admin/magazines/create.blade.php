@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     
-<div class="container">
+<div class="container-fluid">
     <h1 class="display-4">اضف اصدار</h1>
 <div class="row mt-5 col-md-10 offset-md-1">
     <div class="col-md-12">

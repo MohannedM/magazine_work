@@ -5,7 +5,7 @@
 <div class="container py-4">
     <div class="row">
    
-        <div class="col-md-8">
+        <div class="col-md-9 col-sm-9">
                 <img src="/images/{{$article->article_cover}}" alt="" class="img-fluid text-center article-img">
            <h1 class="display-4">{{$article->article_title}}</h1>
        {{-- <h4> بواسطة: <span style="color:red"> {{$article->user_id == 0 ? 'مجهول' : $article->user->first_name . ' ' . $article->user->last_name}} </span> -- {{$article->created_at->month}} {{$article->created_at->day}},{{$article->created_at->year}}<br> --}}
@@ -55,7 +55,7 @@
             <p class="col-md-12" style="white-space:pre-line; ">{{ $article->article_content}}</p>
         </div>
         
-        <div class="col-sm-4 right-padding">
+        <div class="col-md-3 col-sm-3 right-padding">
                 <aside>
         <h2 class="category-headding ">الرعاة</h2>
         <div class="headding-border"></div>
@@ -145,7 +145,7 @@
      {{-- FETCH COMMENT --}}
     <div class="row">
             <div class="col-md-8">
-    <div class="comments-container">
+    <div class="comments-container-fluid">
         <h3>التعليق </h3>
         <div class="headding-border"></div>
         @foreach($comments as $comment)

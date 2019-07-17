@@ -3,7 +3,7 @@
     
 
 <div class="py-5">
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="display-4">اضف إصدار</h1>
         <form action="{{route('magazines.store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}

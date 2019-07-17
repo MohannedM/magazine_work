@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     {{-- <h1>المعلومات الشخصية</h1>
   	<hr> --}}
 	<div class="row no-gutters py-5">

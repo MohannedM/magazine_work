@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <h1 class="display-4">تعديل الراعي</h1>
         <div class="mt-3">
                 <form action="{{route('admin.sponsors.update', ['sponsor'=>$sponsor->id])}}" method="POST" enctype="multipart/form-data">

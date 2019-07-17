@@ -9,7 +9,7 @@
 
   
 
-        <div class="container">
+        <div class="container-fluid">
                 <br>
                 <br>
                 <div class="row">
