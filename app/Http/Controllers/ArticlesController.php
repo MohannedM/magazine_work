@@ -10,7 +10,7 @@ use App\Magazine;
 use App\Category;
 use App\Comment;
 use App\Sponsor;
-
+use DB;
 
 class ArticlesController extends Controller
 {
@@ -136,6 +136,18 @@ class ArticlesController extends Controller
         $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
         $articles = $magazine->articles()->get();
        return view('articles.showall',compact('articles'));
+
+
+    }
+    public function show_category($name)
+    {
+       
+        $category_id = DB::select('SELECT id FROM categories WHERE category_name = ?', [$name]);
+        $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
+       $articles = Article::where('magazine_id',$magazine->id)->where('category_id' ,  $category_id[0]->id )->get();
+       
+     //  return dd($articles);
+      return view('articles.showcategory',compact('articles'));
 
 
     }

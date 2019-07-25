@@ -40,11 +40,12 @@
                             </div>
                             
                         </div>
-                        <div class="form-group mt-3">
-                            <input type="submit" value="تعديل" class="btn btn-secondary">
-                        </div>
-                </form>
-            </div>
+                    </div>
+                            <div class="form-group mt-3">
+                                <input type="submit" value="تعديل" class="btn btn-secondary">
+                            </div>
+                    </form>
         </div>
     </div>    
+
 @endsection

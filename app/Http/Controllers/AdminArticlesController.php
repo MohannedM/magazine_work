@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Magazine;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Category;
+use App\Http\Requests\CreateArticleRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AdminArticlesController extends Controller
 {
@@ -33,7 +36,9 @@ class AdminArticlesController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $magazines = Magazine::all();
+        return view('admin.articles.create', compact('magazines', 'categories'));
     }
 
     /**
@@ -42,9 +47,32 @@ class AdminArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateArticleRequest $request)
     {
-        //
+                //
+                $article = new Article;
+                //Asigning the uploaded image to a variable
+                $file = $request->article_cover;
+                //Asigining the image a new name
+                $cover_name = time() . $file->getClientOriginalName();
+                //Moving image to images folder and saving in database
+                $file->move('images', $cover_name);
+                $article->article_cover = $cover_name;
+
+               if($request->magazine_id == 0){
+                   $article->is_active = 0;
+               }
+               //Assign the rest of information
+                $article->magazine_id = $request->magazine_id;
+                $user = Auth::user();
+                $article->user_id = $user->id;
+                $article->is_active = 1;
+                $article->article_title = $request->article_title;
+                $article->article_content = $request->article_content;
+                $article->category_id = $request->category_id;
+                $article->save();
+
+                return redirect('/admin/articles/'. $article->id .'/photos')->with('success','تم اضافة المقالة بنجاح.');
     }
 
     /**

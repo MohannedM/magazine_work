@@ -52,7 +52,7 @@
             @endif
 
             <br><br>
-            <p class="col-md-12" style="white-space:pre-line; ">{{ $article->article_content}}</p>
+            <p class="col-md-12" style="white-space:pre-line; ">{!! $article->article_content!!}</p>
         </div>
         
         <div class="col-md-3 col-sm-3 right-padding">

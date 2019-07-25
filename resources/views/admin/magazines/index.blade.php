@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <div class="container-fluid">
 <div class="row mt-5 col-md-10 offset-md-1">
         
@@ -35,7 +35,7 @@
                         <td><img src="/images/{{$magazine->cover_path}}" style="height:50px" class="img-fluid"></td>
                         <td><a href="{{route('magazines.show', ['magazine'=>$magazine->id])}}">{{$magazine->magazine_name}}</a></td>
                         <td>{{count($magazine->articles)}}</td>
-                    <td> <textarea style="  overflow-y: scroll;height: 80px;resize: none;">     {{$magazine->title}} </textarea>
+                    <td> <textarea style="  overflow-y: scroll;height: 80px;resize: none;" class=".ck-textarea">     {{$magazine->title}} </textarea>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$magazine->id}}" styel="width=65px;height:30px;">
                             تغيير
                               </button>

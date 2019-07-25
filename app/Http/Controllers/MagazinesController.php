@@ -113,8 +113,9 @@ class MagazinesController extends Controller
     public function latest(){
         // //Get the latest magazine
          $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
-         $categories=Category::all();
-         return view('magazines.latest',compact('magazine','categories'));
+         $articles=$magazine->articles()->get();
+     
+        return view('magazines.latest',compact('magazine','articles'));
       
     }
 

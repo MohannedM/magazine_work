@@ -34,14 +34,34 @@
                                     </div>
                                     <div >
                                      <ul>
+                                         <?php foreach($articles as $article){
+                                              foreach($article->category()->get() as $category)
+                                              {
+                                                  $category_array[]=$category->category_name  ;
+                                              }
+
+                                         }
+                                   
+                                         $category_array=array_unique($category_array);
+                                        
+                                      ?>
+
+                                      @foreach($category_array as $a)
+                                  
                                          <li>
+                                         <img src="images/icon_category.png" style="width:30px;height:30px;">
+                                         <a href="/show_category/{{$a}}"> {{$a }}</a>
+                                            </li>
+                                         {{-- <li>
                                          <img src="images/icon_category.png" style="width:30px;height:30px;">
                                             <a href="/show_all">اخبار</a>
                                          </li>
                                          <li>
                                                 <img src="images/icon_category.png" style="width:30px;height:30px;">
                                                    <a href="/show_hotest">اخبار ساخنة</a>
-                                         </li>
+                                         </li> --}}
+                                
+                                   @endforeach
                                      </ul>
                                     </div>
                                 </div>

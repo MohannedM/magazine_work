@@ -15,7 +15,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="article_content">المقالة</label>
-                <textarea name="article_content" class="form-control {{ $errors->has('article_content') ? 'is-invalid' : ''}}" style="resize:none"></textarea>
+                <textarea name="article_content" class="form-control inline_editor1 {{ $errors->has('article_content') ? 'is-invalid' : ''}}" style="resize:none"></textarea>
                 <span class="invalid-feedback">المقالة مطلوبة</span>
             </div>
             <div class="form-group mb-3">
@@ -42,5 +42,6 @@
         </form>
     </div>
 </div>
-
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    
 @endsection

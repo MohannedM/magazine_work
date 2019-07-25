@@ -61,5 +61,8 @@
         </table>
         </div>
     </div>
+    <div class="col-md-3">
+        <a href="{{route('admin.articles.create')}}" class="btn btn-primary">اضافة مقالة</a>
+    </div>
 </div>
 @endsection

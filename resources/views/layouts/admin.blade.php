@@ -38,6 +38,9 @@
             <li class="nav-item px-2 {{ Request::is('admin/magazines') ? 'active' : '' }}">
                 <a href="{{route('admin.magazines.index')}}" class="nav-link">الإصدرات</a>
             </li>
+            <li class="nav-item px-2 {{ Request::is('admin/articles') ? 'active' : '' }}">
+                <a href="{{route('admin.articles.index')}}" class="nav-link">المقلات</a>
+            </li>
             <li class="nav-item px-2 {{ Request::is('admin/users') ? 'active' : '' }}">
                 <a href="{{route('admin.users.index')}}" class="nav-link">الكتاب</a>
             </li>

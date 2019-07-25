@@ -16,7 +16,7 @@ require('./jquery.newsTicker');
 require('./RYPP');
 require('./owl');
 require('./wow.min');
-
+// CKEDITOR.replace( 'article_content' );
 window.Vue = require('vue');
 
 /**

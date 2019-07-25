@@ -32,6 +32,8 @@ Route::resource('/admin/users', 'AdminUsersController', ['as'=>'admin']);
 Route::get('/categories/{category}', 'CategoriesController@show')->name('categories.show');
 Route::get('/articles/{article_id}/photos', 'PhotosController@create')->name('photos.create');
 Route::post('/articles/{article_id}/photos', 'PhotosController@store')->name('photos.store');
+Route::get('/admin/articles/{article_id}/photos', 'AdminPhotosController@create', ['as'=>'admin']);
+Route::post('/admin/articles/{article_id}/photos', 'AdminPhotosController@store', ['as'=>'admin']);
 Route::resource('/admin/sponsors', 'AdminSponsorsController', ['as'=>'admin']);
 Route::get('/admin/magazines/{magazine_id}/sponsors', 'AdminMagazinesController@addSponsor')->name('magazine.sponsors');
 Route::put('/admin/magazines/{magazine_id}/attach/{sponsor_id}', 'AdminMagazinesController@attachSponsor')->name('sponsor.attach');
@@ -54,7 +56,7 @@ Route::get('/articles_title', 'MagazinesController@latest');
 Route::get('/add_title/{id}', 'MagazinesController@add_title');
 Route::get('/show_all', 'ArticlesController@show_all');
 Route::get('/show_hotest', 'ArticlesController@show_hotest');
-
+Route::get('/show_category/{category_name}', 'ArticlesController@show_category');
 
 
 

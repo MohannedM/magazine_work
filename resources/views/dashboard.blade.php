@@ -283,7 +283,7 @@
                                                             {{-- <h4 style="height:30px;"><a href="{{route('articles.show', ['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}"> {{$article['article_title']}}</a></h4> --}}
                                                         </div>
                                                         <div class="post-title-author-details">
-                                                            <h4> {{substr($article['article_content'], 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ المزيد</a></h4>
+                                                            <h4> {!!substr($article['article_content'], 0, 60)!!} <a href="{{route('articles.show',['magazine_id'=>$article['magazine_id'], 'article'=>$article['id']])}}">...اقرأ المزيد</a></h4>
                                                             <div class="post-editor-date">
                                                                 <div class="post-date">
                                                                     <i class="pe-7s-clock"></i> {{Arabic::since($article['created_at'])}}
@@ -360,7 +360,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="post-title-author-details">
-                                                            <h4> {{substr($article->article_content, 0, 60)}} <a href="{{route('articles.show',['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">...اقرأ المزيد</a></h4>
+                                                            <h4> {!!substr($article->article_content, 0, 60)!!} <a href="{{route('articles.show',['magazine_id'=>$article->magazine_id, 'article'=>$article->id])}}">...اقرأ المزيد</a></h4>
                                                             <div class="post-editor-date">
                                                                 <!-- post date -->
                                                                 <div class="post-date">
