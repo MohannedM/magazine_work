@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Site;
+use App\Sponsor;
 class SitesController extends Controller
 {
     /**
@@ -14,7 +15,13 @@ class SitesController extends Controller
     public function index()
     {
         $sites=Site::all();
-        return view('sites.index',compact('sites'));
+
+        //Get sponsors
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+        $sponsorsArr = $sponsors->toArray();
+        $latestSponsors = array_slice($sponsorsArr, 0 , 10);
+
+        return view('sites.index',compact('sites', 'latestSponsors'));
     }
 
     /**

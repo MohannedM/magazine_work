@@ -8,6 +8,7 @@ use App\Channel;
 use App\Article;
 use App\Category;
 use App\Http\Requests\CreateMagazineRequest;
+use App\Sponsor;
 
 class MagazinesController extends Controller
 {
@@ -27,7 +28,12 @@ class MagazinesController extends Controller
     public function index()
     {
         $magazines = Magazine::all();
-        return view('magazines.index', compact('magazines'));
+        //Get sponsors
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+        $sponsorsArr = $sponsors->toArray();
+        $latestSponsors = array_slice($sponsorsArr, 0 , 10);
+
+        return view('magazines.index', compact('magazines','latestSponsors'));
     }
 
     /**
@@ -114,8 +120,14 @@ class MagazinesController extends Controller
         // //Get the latest magazine
          $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
          $articles=$magazine->articles()->get();
+
+         
+        //Get sponsors
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+        $sponsorsArr = $sponsors->toArray();
+        $latestSponsors = array_slice($sponsorsArr, 0 , 10);
      
-        return view('magazines.latest',compact('magazine','articles'));
+        return view('magazines.latest',compact('magazine','articles', 'latestSponsors'));
       
     }
 

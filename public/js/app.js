@@ -14244,6 +14244,7 @@ __webpack_require__(45);
 __webpack_require__(46);
 __webpack_require__(47);
 // CKEDITOR.replace( 'article_content' );
+CKEDITOR.replace('title');
 window.Vue = __webpack_require__(48);
 
 /**
@@ -36845,10 +36846,6 @@ module.exports = function spread(callback) {
 $('.carousel').carousel({
     interval: 4000,
     keyboard: true
-});
-
-$("textarea").each(function () {
-    CKEDITOR.inline(this);
 });
 
 /***/ }),

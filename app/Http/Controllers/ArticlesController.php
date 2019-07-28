@@ -145,9 +145,15 @@ class ArticlesController extends Controller
         $category_id = DB::select('SELECT id FROM categories WHERE category_name = ?', [$name]);
         $magazine = Magazine::where('is_active', 1)->orderBy('created_at', 'desc')->first();
        $articles = Article::where('magazine_id',$magazine->id)->where('category_id' ,  $category_id[0]->id )->get();
+
+                
+        //Get sponsors
+        $sponsors = Sponsor::where('created_at', '>', date('Y-m-d',time() - 60*60*24*365))->orderBy('ordering', 'desc')->get();
+        $sponsorsArr = $sponsors->toArray();
+        $latestSponsors = array_slice($sponsorsArr, 0 , 10);
        
      //  return dd($articles);
-      return view('articles.showcategory',compact('articles'));
+      return view('articles.showcategory',compact('articles', 'latestSponsors'));
 
 
     }
